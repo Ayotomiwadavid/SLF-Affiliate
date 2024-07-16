@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    overflow-x: hidden;
+}
+
+.herosection{
+    background: url('./Images/pattern.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.heroAside{
+    background: url('./Images/shape1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* .abooutAside{
+    background: url('./Images/shape2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+} */

@@ -4,10 +4,51 @@ import Button from "../Re-useAble/Button";
 import CoinIcon from "../../Images/coin.png"
 import CalendarIcon from '../../Images/calendar.png'
 import MoneyIcon from '../../Images/money.png'
+import PlanCards from "../Cards/PlanCards";
+
 
 const Plan = () => {
+  let plans = [
+    {
+      icon: Anaysis,
+      title: "Silver Plan",
+      minDeposit: "10,000",
+      maxDeposit: "30,000",
+      minWithdrawal: "50,000",
+      maxWithdrawal: "150,000"
+    },
+
+    {
+      icon: CoinIcon,
+      title: "Bronze Plan",
+      minDeposit: "40,000",
+      maxDeposit: "60,000",
+      minWithdrawal: "200,000",
+      maxWithdrawal: "300,000"
+    },
+
+    {
+      icon: CalendarIcon,
+      title: "Copper Plan",
+      minDeposit: "70,000",
+      maxDeposit: "90,000",
+      minWithdrawal: "350,000",
+      maxWithdrawal: "450,000"
+    },
+
+    {
+      icon: MoneyIcon,
+      title: "Premium Plan",
+      minDeposit: "10,000",
+      maxDeposit: "30,000",
+      minWithdrawal: "50,000",
+      maxWithdrawal: "150,000"
+    }
+
+
+  ]
   return (
-    <section className="w-full h-fit flex flex-col py-10 px-[15px]items-center justify-between gap-3 bg-white overflow-x-hidden md:py-10 md:px-0">
+    <section className="w-full h-fit flex flex-col py-10 px-[10px] items-center justify-between gap-3 bg-white overflow-x-hidden md:py-10 md:px-0">
       <div className="w-full flex flex-col items-center justify-center gap-5">
         <h5 className="text-[#F46B45] font-semibold font-sans tracking-widest uppercase text-xl">
         OUR PLANS
@@ -16,7 +57,7 @@ const Plan = () => {
         <span className="p-[2px] bg-[#F46B45] w-[20%] md:w-[5%]"></span>
       </div>
       <main className="flex flex-col items-center justify-center gap-5 py-10 md:flex-row">
-        <div className="md:w-[250px] w-[85%] cursor-pointer h-fit rounded-lg bg-white shadow-xl group">
+        <div className="md:w-[250px] w-[95%] cursor-pointer h-fit rounded-lg bg-white shadow-xl group">
           <div className=" w-full flex items-center justify-center py-3">
             <img src={Anaysis} alt="icon" className="h-[15%] w-[15%]" />
           </div>

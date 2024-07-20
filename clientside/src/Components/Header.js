@@ -12,7 +12,7 @@ const Header = () => {
     setSiderBarVisibility((prevValue) => !prevValue);
   };
   return (
-    <header className="w-full md:fixed flex items-center justify-between py-[15px] px-[05vw]  shadow-lg bg-gradient-to-r from-white to-transparent z-50 top-0 left-0">
+    <header className="w-full md:fixed flex items-center justify-between py-[15px] px-[05vw]  shadow-lg bg-white z-50 top-0 left-0">
       <div className="flex items-center justify-center">
         <img src={Logo} alt="logo" />
       </div>
@@ -34,7 +34,13 @@ const Header = () => {
             to="/investment-plan"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
-            <li>investment plan</li>
+            <li>Investment plan</li>
+          </Link>
+          <Link
+            to="/my-account"
+            className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
+          >
+            <li>Dashboard</li>
           </Link>
           <Link
             to="/support"

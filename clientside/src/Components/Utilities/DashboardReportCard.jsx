@@ -21,7 +21,7 @@ const DashboardReportCard = ({ report, index }) => {
 
 
         <div className={`flex gap-4 items-center max-w-sm p-6 border border-gray-200 rounded-lg shadow ${isFirstCard ? 'bg-purple-800' : 'bg-white'}`}>
-            <div className={`w-16 h-16 flex justify-center items-center rounded-md bg-gray-100 ${isFirstCard ? 'bg-purple-400' : 'bg-white'}`}>
+            <div className={`w-16 h-16 flex justify-center items-center rounded-md bg-gray-100 ${isFirstCard ? 'bg-purple-400' : 'bg-gray-100'}`}>
                 {report.icon}
             </div>
             <div className="">

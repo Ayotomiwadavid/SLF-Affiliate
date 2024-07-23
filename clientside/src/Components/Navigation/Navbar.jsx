@@ -28,18 +28,50 @@ const Navbar = () => {
                                 />
                             </svg>
                         </button>
-                        <a href="https://flowbite.com" className="flex ms-2 md:me-24">
-                            {/* <img
-                                src="https://flowbite.com/docs/images/logo.svg"
-                                className="h-8 me-3"
-                                alt="FlowBite Logo"
-                            /> */}
-                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap ">
+                        <a href="/dashboard" className="flex ms-2 md:me-24">
+                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
                                 SLF_AFFILIATE
                             </span>
                         </a>
                     </div>
                     <div className="flex items-center">
+                        <div className="relative hidden md:block">
+                            <input
+                                type="text"
+                                className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Search..."
+                            />
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg
+                                    className="w-5 h-5 text-gray-500"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        clipRule="evenodd"
+                                        d="M12.9 14.32a8 8 0 111.42-1.42l4.34 4.33-1.42 1.42-4.33-4.34zM8 14a6 6 0 100-12 6 6 0 000 12z"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                        <button
+                            type="button"
+                            className="p-2 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        >
+                            <span className="sr-only">View notifications</span>
+                            <svg
+                                className="w-6 h-6"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M10 2a6 6 0 016 6v3.586l1.707 1.707A1 1 0 0116.707 15H3.293a1 1 0 01-.707-1.707L4.293 11.586V8a6 6 0 016-6zm0 16a3 3 0 002.995-2.824L13 15h-6a3 3 0 002.824 2.995L10 18z"
+                                />
+                            </svg>
+                        </button>
                         <div className="flex items-center ms-3">
                             <div>
                                 <button

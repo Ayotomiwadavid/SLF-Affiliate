@@ -7,11 +7,11 @@ const WelcomeUser = () => {
         username: "Johnny Deep"
     }
     return (
-        
-        <div className="relative m-2 mt-4">
-            <div className="h-78 md:h-64 pb-10 items-center sm:p-10 sm:pb-16 p-5 rounded bg-purple-800">
-                <div className=" pb-10">
-                    <h1 className="md:text-4xl lg:text-7xl flex gap-2 items-center pt-5 text-3xl text-white font-bold">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-2 mt-4">
+            <div className="col-span-2 h-78 md:h-74 pb-10 flex justify-start items-center p-5 py-8 rounded-xl bg-gradient-to-r from-purple-600 via-purple-700 to-pink-800">
+                <div className="">
+                    {/* <h1 className="md:text-4xl lg:text-7xl flex gap-2 items-center pt-5 text-3xl text-white font-bold">
                         <span>Hello,</span>
                         {user.username ? (
                             <div>{user.username}!</div>
@@ -36,11 +36,12 @@ const WelcomeUser = () => {
                                 <span className="sr-only">Loading...</span>
                             </div>
                         )}
-                    </h1>
-                    <p className="text-md text-white font-medium py-4">Welcome Back, have a nice trading week</p>
+                    </h1> */}
+                    <div className="date font-semibold text-xs pt-4 sm:text-sm"> <span className="text-gray-300">Wednesday</span>, 14th June 2024</div>
+                    <h1 className="text-9xl py-4 text-white font-medium">$0</h1>
+                    <p className="text-gray-100 font-bold text-sm">Lorem ipsum dolor sit amet consectetur.</p>
 
-
-                    <div className="mt-2">
+                    <div className="mt-8">
                         <TransactionButtonGroup />
                     </div>
                 </div>
@@ -49,6 +50,28 @@ const WelcomeUser = () => {
                     <img src="@/assets/img/hero-2.png" className="w-full object-fit -mt-0" alt="" />
                 </div> */}
             </div>
+
+            <div className="col bg-white shadow-lg rounded">
+                <div className="flex justify-between items-center p-4">
+                    <h1 className="text-lg font-semibold">Stats</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="8" cy="2.5" r=".75" /><circle cx="8" cy="8" r=".75" /><circle cx="8" cy="13.5" r=".75" /></g></svg>
+                    {/* <h1 className="text-md">Stats</h1> */}
+                </div>
+                <div className="flex flex-col items-center p-5">
+                    <div className=" bg-purple-200 rounded-full flex items-center justify-center mb-3">
+                        <img
+                            className="w-30 h-30 rounded-full"
+                            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                            alt="avatar"
+                        />
+                    </div>
+                    <p className="text-xl font-medium">Good Morning Johhny</p>
+                    <p className="text-gray-300 text-md">Lorem ipsum dolor sit, amet consectetu.</p>
+                </div>
+            </div>
+
+
+
         </div>
     )
 }

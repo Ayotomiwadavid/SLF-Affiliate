@@ -31,9 +31,9 @@ const InvestmentPlans = () => {
             <h1 className="text-4xl font-bold text-left mb-8">Our Investment Plans</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {plans.map((plan, index) => (
-                    <div className={`plan bg-white p-6 rounded-lg shadow-md ${index == 0 ? "bg-purple-600 " : "bg-white"}`} key={index}>
-                        <h2 className={`text-xl font-semibold mb-4 ${index == 0 ? "text-white" : ""}`}>{plan.title}</h2>
-                        <h2 className={`text-4xl font-semibold mb-4 ${index == 0 ? "text-white" : ""}`}>$50/month</h2>
+                    <div className={`plan bg-white p-6 rounded-lg shadow-md `} key={index}>
+                        <h2 className={`text-xl font-semibold mb-4`}>{plan.title}</h2>
+                        <h2 className={`text-4xl font-semibold mb-4`}>$50/month</h2>
                         <p className={`text-gray-700 mb-4 ${index == 0 ? "text-white" : ""}`}>{plan.details}</p>
                         <div className="w-full flex flex-col py-7">
                             <p className="text-[16px] py-1 capitalize text-[#818181] font-sans flex items-center gap-2">

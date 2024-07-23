@@ -1,14 +1,20 @@
 import React from 'react';
 
-const DashboardReportCard = ({ report }) => {
+const DashboardReportCard = ({ report, index }) => {
+    const addDollarSign = ["Wallet Balance", "Deposits", "Payouts", "Earnings"].includes(report.title);
+    const isFirstCard = index === 0; // Check if it's the first card
+
     return (
-        <div className="p-4 bg-white shadow rounded-lg flex items-center space-x-4">
-            <div className="p-2 bg-gray-100 rounded-md">
+        <div className={`p-4 shadow rounded ${isFirstCard ? 'bg-purple-800' : 'bg-white'}`}>
+            <div className="p-2 rounded-md">
                 {report.icon}
             </div>
             <div>
-                <h3 className="text-xl font-normal">{report.title}</h3>
-                <p className='font-bold text-xl'>{report.value}</p>
+                <h3 className={`text-sm font-normal ${isFirstCard ? 'text-white' : 'text-black'}`}>{report.title}</h3>
+                <p className={`font-bold text-3xl ${isFirstCard ? 'text-white' : 'text-black'}`}>
+                    <span>{addDollarSign ? "$" : ""}</span>
+                    {report.value}
+                </p>
             </div>
         </div>
     );

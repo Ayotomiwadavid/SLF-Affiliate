@@ -8,9 +8,9 @@ const WelcomeUser = () => {
     }
     return (
         <div className="relative">
-            <div className="h-78 md:h-64 pb-10 items-center sm:p-10 sm:pb-16 p-5 rounded bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 dark:bg-gray-800">
+            <div className="h-78 md:h-64 pb-10 items-center sm:p-10 sm:pb-16 p-5 sm:rounded bg-purple-800">
                 <div className=" pb-10">
-                    <h1 className="md:text-4xl lg:text-6xl flex gap-2 items-center pt-5 text-3xl text-white font-bold">
+                    <h1 className="md:text-4xl lg:text-7xl flex gap-2 items-center pt-5 text-3xl text-white font-bold">
                         <span>Hello,</span>
                         {user.username ? (
                             <div>{user.username}!</div>
@@ -36,10 +36,8 @@ const WelcomeUser = () => {
                             </div>
                         )}
                     </h1>
-                    <p className="text-md text-white font-medium">Welcome Back, have a nice trading week</p>
-                    <p className="hidden md:block text-md text-gray-200 text-white font-medium">
-                        Ready to start your week with some new pitch desk?
-                    </p>
+                    <p className="text-md text-white font-medium py-4">Welcome Back, have a nice trading week</p>
+
 
                     <div className="mt-2">
                         <TransactionButtonGroup />

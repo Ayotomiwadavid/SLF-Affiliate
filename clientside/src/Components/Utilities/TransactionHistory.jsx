@@ -16,7 +16,7 @@ const TransactionHistory = ({ transactions }) => {
 
     return (
         <section className="py-5">
-            <div className="mx-auto max-w-screen-xl">
+            <div className="">
 
                 <div className="bg-white  relative shadow-md sm:rounded-lg overflow-hidden">
                     <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -103,11 +103,43 @@ const TransactionHistory = ({ transactions }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
-                                <td class="px-4 py-3">Paypal</td>
-                                <td class="px-4 py-3">$400</td>
-                                <td class="px-4 py-3">Completed</td>
-                                <td class="px-4 py-3">Edit</td>
+                                <tr>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
+                                    <td class="px-4 py-3">Paypal</td>
+                                    <td class="px-4 py-3">$400</td>
+                                    <td class="px-4 py-3">Completed</td>
+                                    <td class="px-4 py-3">Edit</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
+                                    <td class="px-4 py-3">Paypal</td>
+                                    <td class="px-4 py-3">$400</td>
+                                    <td class="px-4 py-3">Completed</td>
+                                    <td class="px-4 py-3">Edit</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
+                                    <td class="px-4 py-3">Paypal</td>
+                                    <td class="px-4 py-3">$400</td>
+                                    <td class="px-4 py-3">Completed</td>
+                                    <td class="px-4 py-3">Edit</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
+                                    <td class="px-4 py-3">Paypal</td>
+                                    <td class="px-4 py-3">$400</td>
+                                    <td class="px-4 py-3">Completed</td>
+                                    <td class="px-4 py-3">Edit</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">XYZ123456ABCDF</th>
+                                    <td class="px-4 py-3">Paypal</td>
+                                    <td class="px-4 py-3">$400</td>
+                                    <td class="px-4 py-3">Completed</td>
+                                    <td class="px-4 py-3">Edit</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

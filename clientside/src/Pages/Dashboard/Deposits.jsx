@@ -22,11 +22,12 @@ const Deposit = () => {
     };
 
     return (
-        <DashboardLayout>
-            <div className="container mx-auto p-4">
+        <div className="">
+            <DashboardLayout />
+            <div className="container sm:ml-64 mt-16 mx-auto p-4">
                 <h1 className="text-4xl font-bold text-left mb-8">Make a Deposit</h1>
 
-                <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-md mx-16 mb-8">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="amount">
                             Amount
@@ -70,7 +71,8 @@ const Deposit = () => {
                     ))}
                 </div>
             </div>
-        </DashboardLayout>
+        </div>
+
 
     );
 }

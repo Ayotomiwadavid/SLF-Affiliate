@@ -4,6 +4,8 @@ import DashboardReportCard from '../../Components/Utilities/DashboardReportCard'
 import WelcomeUser from '../../Components/Utilities/WelcomeUser'
 import TransactionHistory from '../../Components/Utilities/TransactionHistory'
 import DashboardChart from '../../Components/Chart/DashboardChart'
+import Footer from '../../Components/Navigation/Footer'
+
 
 
 const WalletBalanceIcon = () => (
@@ -50,7 +52,11 @@ const MyAccount = () => {
     return (
         <div>
             <DashboardLayout />
-            <div className="sm:ml-64 sm:p-4 my-16">
+            <div className="sm:ml-64 sm:p-4 mb-16">
+                <div className="flex items-center gap-2 mx-2  mt-16 font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6l2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2z" clip-rule="evenodd" /></svg>
+                    Home
+                </div>
                 <WelcomeUser />
                 <div className="mt-4">
                     <div className="">
@@ -60,7 +66,7 @@ const MyAccount = () => {
                                 <div className="date font-semibold text-xs sm:text-sm"> <span className="text-gray-300">Wednesday</span>, 14th June 2024</div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3">
-                                <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>
+                                <div className='grid grid-cols-1 xl:grid-cols-2 gap-4 '>
                                     {report.map((item, index) => (
                                         <DashboardReportCard key={index} index={index} report={item} />
                                     ))}
@@ -83,6 +89,7 @@ const MyAccount = () => {
                     <h1 className='text-2xl  pb-2 font-semibold'>Transaction History</h1>
                     <TransactionHistory transactions={transactions} />
                 </div>
+                <Footer />
             </div>
 
 

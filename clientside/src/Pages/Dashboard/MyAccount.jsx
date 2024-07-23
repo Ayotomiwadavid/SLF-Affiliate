@@ -57,7 +57,7 @@ const MyAccount = () => {
                         <div className="col-span-3 bg-gray-50 rounded-lg p-4">
                             <div className="flex items-center justify-between">
                                 <h1 className="text-gray-900 text-2xl font-bold py-4">My Portfolio</h1>
-                                <div className="date font-semibold text-sm"> <span className="text-gray-300">Wednesday</span>, 14th June 2024</div>
+                                <div className="date font-semibold text-xs sm:text-sm"> <span className="text-gray-300">Wednesday</span>, 14th June 2024</div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-3">
                                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4 '>

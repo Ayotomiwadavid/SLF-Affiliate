@@ -7,8 +7,8 @@ const WelcomeUser = () => {
         username: "Johnny Deep"
     }
     return (
-        <div className="relative">
-            <div className="h-78 md:h-64 pb-10 items-center sm:p-10 sm:pb-16 p-5 sm:rounded bg-purple-800">
+        <div className="relative m-2 mt-16">
+            <div className="h-78 md:h-64 pb-10 items-center sm:p-10 sm:pb-16 p-5 rounded bg-purple-800">
                 <div className=" pb-10">
                     <h1 className="md:text-4xl lg:text-7xl flex gap-2 items-center pt-5 text-3xl text-white font-bold">
                         <span>Hello,</span>

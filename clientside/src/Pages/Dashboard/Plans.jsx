@@ -17,7 +17,7 @@ const Plans = () => {
                     <Breadcrumb />
                 </div>
                 <div className="bg-purple-600 mx-4 rounded-lg p-4 py-10">
-                    <h1 className="text-8xl text-white text-center">
+                    <h1 className="sm:text-8xl text-4xl text-white text-center">
                         Plans
                     </h1>
                 </div>

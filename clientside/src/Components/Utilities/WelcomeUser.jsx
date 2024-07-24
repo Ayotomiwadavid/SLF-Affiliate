@@ -38,7 +38,7 @@ const WelcomeUser = () => {
                         )}
                     </h1> */}
                     <div className="date font-semibold text-xs pt-4 sm:text-sm"> <span className="text-gray-300">Current Plan</span></div>
-                    <h1 className="text-9xl text-white font-medium">Level 1</h1>
+                    <h1 className="text-4xl md:text-9xl text-white font-medium">Level 1</h1>
                     <p className="text-gray-100 font-bold text-sm">Lorem ipsum dolor sit amet consectetur.</p>
 
                     <div className="mt-8">

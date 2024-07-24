@@ -8,6 +8,8 @@ import MyAccount from "./Pages/Dashboard/MyAccount";
 import Plans from "./Pages/Dashboard/Plans";
 import Referrals from "./Pages/Dashboard/Referrals";
 import Deposit from "./Pages/Dashboard/Deposits";
+import Profile from "./Pages/Dashboard/Profile";
+
 
 
 
@@ -21,6 +23,7 @@ const App = () => {
       <Route path="/plans" element={<Plans />} />
       <Route path="/referrals" element={<Referrals />} />
       <Route path="/deposit" element={<Deposit />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -58,7 +58,7 @@ const WelcomeUser = () => {
                     {/* <h1 className="text-md">Stats</h1> */}
                 </div>
                 <div className="flex flex-col items-center p-5">
-                    <div className=" bg-purple-200 rounded-full flex items-center justify-center mb-3">
+                    <div className=" bg-purple-200 rounded-full border border-4 border-purple-600 flex items-center justify-center mb-3">
                         <img
                             className="w-30 h-30 rounded-full"
                             src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"

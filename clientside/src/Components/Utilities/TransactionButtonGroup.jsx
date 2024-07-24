@@ -21,7 +21,7 @@ const TransactionButtonGroup = () => {
 
     return (
         <div className="flex space-x-4">
-            <TransactionButton icon={<DepositIcon />} label="Deposit" onClick={handleDepositClick} />
+            <TransactionButton icon={<DepositIcon />} label="Change Plan" onClick={handleDepositClick} />
             <TransactionButton icon={<WithdrawalIcon />} label="Withdrawal" onClick={handleWithdrawalClick} />
         </div>
     );

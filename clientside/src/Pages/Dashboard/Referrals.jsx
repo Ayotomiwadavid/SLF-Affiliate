@@ -1,5 +1,10 @@
 import React from 'react';
 import DashboardLayout from '../../Components/Layout/DashboardLayout';
+import Breadcrumb from '../../Components/Navigation/BreadCrumb'
+import ReferralLinkClipboard from '../../Components/Utilities/ReferralClipboard';
+import ReferredUsersTable from '../../Components/Utilities/ReferredUsers';
+
+
 
 
 const referrals = [
@@ -11,10 +16,34 @@ const referrals = [
 
 const Referrals = () => {
     return (
-        <div className="container mx-auto p-4">
-            <DashboardLayout>
-                <h1 className="text-3xl font-bold text-center mb-8">Your Referrals</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <>
+            <DashboardLayout />
+
+            <div className="sm:ml-64 mt-16">
+                <div className="p-4">
+                    <Breadcrumb />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                    <div className="m-4">
+                        <h1 className="text-4xl font-bold text-left">Referrals</h1>
+                        <p className="text-gray-400 text-md">Lorem ipsum dolor sit amet consectetur.</p>
+                        <div className="mt-8">
+                            <p className="text-gray-600">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa necessitatibus nostrum, architecto asperiores aspernatur maxime voluptatem dicta vitae quas totam?
+                            </p>
+                        </div>
+
+                        <ReferralLinkClipboard />
+
+                    </div>
+
+                    <div className="px-4">
+                        <ReferredUsersTable />
+                    </div>
+                </div>
+
+                {/* <div className="">
                     {referrals.map((referral, index) => (
                         <div className="bg-white p-6 rounded-lg shadow-md" key={index}>
                             <h2 className="text-xl font-semibold mb-4">{referral.name}</h2>
@@ -23,10 +52,9 @@ const Referrals = () => {
                             <button className="bg-blue-500 text-white px-4 py-2 rounded">View Details</button>
                         </div>
                     ))}
-                </div>
-            </DashboardLayout>
-
-        </div>
+                </div> */}
+            </div>
+        </>
     );
 }
 

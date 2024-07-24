@@ -31,7 +31,7 @@ const InvestmentPlans = () => {
             <h1 className="text-4xl font-bold text-left mb-8">Our Investment Plans</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {plans.map((plan, index) => (
-                    <div className={`plan bg-white p-6 rounded-lg shadow-md `} key={index}>
+                    <div className={`plan bg-white border p-6 rounded-lg shadow-md `} key={index}>
                         <h2 className={`text-xl font-semibold mb-4`}>{plan.title}</h2>
                         <h2 className={`text-4xl font-semibold mb-4`}>$50/month</h2>
                         <p className={`text-gray-700 mb-4`}>{plan.details}</p>

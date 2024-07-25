@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -57,6 +57,26 @@ const Sidebar = () => {
             element.style.display = 'none';
         }
     };
+    useEffect(() => {
+
+
+        const sidebar = document.getElementById("logo-sidebar");
+        const toggleButton = document.querySelector("[data-drawer-toggle='logo-sidebar']");
+
+        toggleButton.addEventListener("click", function () {
+            if (sidebar.classList.contains("-translate-x-full")) {
+                sidebar.classList.remove("-translate-x-full");
+                sidebar.classList.add("translate-x-0");
+            } else {
+                sidebar.classList.add("-translate-x-full");
+                sidebar.classList.remove("translate-x-0");
+            }
+        });
+
+        return () => {
+            toggleButton.removeEventListener("click", handleDismiss);
+        };
+    }, []);
 
     return (
         <aside

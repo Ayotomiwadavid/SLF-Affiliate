@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-import ConfirmPlanChange from './ConfirmPlanChange';
+import { ConfirmPlanChange, useConfirmPlanChange } from './ConfirmPlanChange';
+
 
 
 const InvestmentPlans = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => {
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
-
+    // const [isModalOpen, setIsModalOpen] = useState(false);
     const confirmDeletion = () => {
         // Handle the deletion logic here
         console.log("Item deleted");
@@ -25,6 +17,11 @@ const InvestmentPlans = () => {
         { title: 'Copper Plan', details: 'Details about Plan C.' },
         { title: 'Premium Plan', details: 'Details about Plan D.' },
     ];
+
+    const { isOpen, openModal, closeModal, handleConfirm } = useConfirmPlanChange(() => {
+        console.log("Confirmed!");
+        // Add your custom confirmation logic here
+    });
 
     return (
         <div className="container mx-auto p-4">
@@ -57,7 +54,7 @@ const InvestmentPlans = () => {
                                 Max withdrawal: NGN150,000
                             </p>
                         </div> */}
-                        <button className="bg-purple-900 text-white px-4 py-2 rounded">Choose plan</button>
+                        <button onClick={openModal} className="bg-purple-900 text-white px-4 py-2 rounded">Choose plan</button>
                         {/* <div className="flex justify-center m-5">
                             <button onClick={openModal} className="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
                                 Show delete confirmation
@@ -66,7 +63,7 @@ const InvestmentPlans = () => {
                     </div>
                 ))}
             </div>
-            <ConfirmPlanChange isOpen={isModalOpen} onClose={closeModal} onConfirm={confirmDeletion} />
+            <ConfirmPlanChange isOpen={isOpen} onClose={closeModal} onConfirm={handleConfirm} />
         </div>
     );
 }

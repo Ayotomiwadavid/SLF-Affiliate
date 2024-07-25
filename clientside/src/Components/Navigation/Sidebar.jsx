@@ -32,7 +32,7 @@ const Sidebar = () => {
             ),
         },
         {
-            to: '/wallet',
+            to: '/profile',
             label: 'Profile',
             icon: (
 

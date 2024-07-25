@@ -37,7 +37,7 @@ const Header = () => {
             <li>Investment plan</li>
           </Link>
           <Link
-            to="/my-account"
+            to="/dashboard"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>Dashboard</li>

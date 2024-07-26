@@ -22,9 +22,6 @@ const Form = ({ type }) => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [showPassword2, setShowPassword2] = useState(false);
-
   const [loading, setLoading] = useState(false);
 
   // =====================================================
@@ -233,7 +230,15 @@ const Form = ({ type }) => {
           onClick={handleLogin}
           type="submit"
           className="col-span-2 w-3/4 bg-[#F46B45] h-[45px] text-white capitalize rounded-lg font-semibold text-xl cursor-pointer transition-all duration-500 hover:scale-110"
-        >Submit</button>
+        >
+          {loading ? (
+            <div className="flex gap-3 justify-center items-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+              Loading...
+            </div>
+          ) : (
+            "Log in"
+          )}</button>
       )
       }
 
@@ -242,7 +247,15 @@ const Form = ({ type }) => {
           onClick={handleSubmit}
           type="submit"
           className="col-span-2 w-3/4 bg-[#F46B45] h-[45px] text-white capitalize rounded-lg font-semibold text-xl cursor-pointer transition-all duration-500 hover:scale-110"
-        >Submit</button>
+        >
+          {loading ? (
+            <div className="flex gap-3 justify-center items-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+              Loading...
+            </div>
+          ) : (
+            "Sign Up"
+          )}</button>
       )
       }
     </form>

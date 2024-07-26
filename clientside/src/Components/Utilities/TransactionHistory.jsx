@@ -265,7 +265,7 @@ const TransactionHistory = () => {
               </thead>
               <tbody>
                 <>
-                  {!filteredTransactions.length > 0 ? (
+                  {filteredTransactions.length > 0 ? (
                     filteredTransactions.map(() => {
                       return (
                         <tr>

@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
-  const { walletBalance, deposits, payouts, earnings } = useAuth();
+  const { walletBalance, deposits, payouts, earnings, referral } = useAuth();
 
   const getValue = (title) => {
     switch (title) {
@@ -14,12 +14,19 @@ const DashboardReportCard = ({ report, index }) => {
         return payouts;
       case "Earnings":
         return earnings;
+      case "Referral":
+        return referral;
       default:
         return 0;
     }
   };
 
-  const addDollarSign = ["Wallet Balance", "Deposits", "Payouts", "Earnings"].includes(report.title);
+  const addDollarSign = [
+    "Wallet Balance",
+    "Deposits",
+    "Payouts",
+    "Earnings",
+  ].includes(report.title);
   const isFirstCard = index === 0; // Check if it's the first card
 
   return (

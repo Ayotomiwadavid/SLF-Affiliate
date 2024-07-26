@@ -11,7 +11,7 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [walletBalance, setBalance] = useState("");
-  const [deposits, setDeposits] = useState("");
+  const [referral, setReferral] = useState("");
 
   const [transactions, setTransaction] = useState([]);
 
@@ -71,9 +71,37 @@ const AuthContextProvider = ({ children }) => {
   };
 
 
+  const fetchReferral = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/referral/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setReferral(data.referral_count);
+          localStorage.setItem(
+            "referral",
+            JSON.stringify(data.results)
+          );
+          // console.log(data.data.total_earnings);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+
   useEffect(() => {
     fetchBalance();
     fetchTransaction();
+    fetchReferral();
   }, []);
 
   // const logOut = () => {
@@ -98,7 +126,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         user,
         walletBalance,
-        deposits,
+        referral,
         transactions,
         // loading,
         // logOut,

@@ -19,6 +19,8 @@ const Form = ({ type }) => {
   const [transactionPin, setTransactionPin] = useState("");
   const [confirmTransactionPin, setConfirmTransactionPin] = useState("");
 
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
 
   // const [showPassword, setShowPassword] = useState(false);
   // const [showPassword2, setShowPassword2] = useState(false);
@@ -81,8 +83,9 @@ const Form = ({ type }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (!email || !password || !firstName || !lastName || !username || !confirmPassword ||
-      referralID || transactionPin || confirmTransactionPin) {
+    if (!email || !password || !firstName || !lastName || !username || !confirmPassword
+      // referralID || transactionPin || confirmTransactionPin
+    ) {
       toast.error("All fields are required");
       setLoading(false);
       return;
@@ -116,7 +119,8 @@ const Form = ({ type }) => {
         }, 2000);
       } else if (response) {
         toast.error(data.detail);
-        console.log(data.detail)
+        setErrorPassword(password[0])
+        console.log(password[0])
       } else {
         // toast.error(password[0]);
       }
@@ -133,7 +137,7 @@ const Form = ({ type }) => {
     <form
       className={
         type === "signup"
-          ? "bg-[#f5f5f5] md:grid md:grid-cols-2 md:place-items-center flex flex-col items-center justify-center md:max-h-[550px] h-fit rounded-lg shadow-lg py-7 px-3 gap-5"
+          ? "bg-[#f5f5f5] md:grid md:grid-cols-2 md:place-items-start flex flex-col items-center justify-center md:max-h-[550px] h-fit rounded-lg shadow-lg py-7 px-3 gap-5"
           : "bg-[#f5f5f5] flex flex-col items-center justify-center max-h-[550px] h-fit rounded-lg shadow-lg py-7 px-3 gap-5"
       }
     >
@@ -144,13 +148,19 @@ const Form = ({ type }) => {
         onChange={e => setEmail(e.target.value)}
         value={email}
       />
-      <input
-        className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-        type="password"
-        placeholder="Password"
-        onChange={e => setPassword(e.target.value)}
-        value={password}
-      />
+
+      <div>
+        <input
+          className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+          type="password"
+          placeholder="Password"
+          onChange={e => setPassword(e.target.value)}
+          value={password}
+        />
+        <small>{errorPassword && <p className="text-[red] mb-3 mt-1">Ensure this field has at least 8 characters.</p>}</small>
+      </div>
+
+
       {type === "signup" && (
         <>
           <input

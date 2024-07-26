@@ -56,12 +56,12 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setTransaction(data);
+          setTransaction(data.results[0]);
           localStorage.setItem(
             "transactions",
             JSON.stringify(data.results)
           );
-          // console.log(data.data.total_earnings);
+          // console.log(data.results[0].amount);
           setLoading(true);
         });
       } else if (response) {

@@ -4,21 +4,13 @@ import { useAuth } from "../../context/AuthContext";
 const TransactionHistory = () => {
   const { transactions } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredTransactions, setFilteredTransactions] =
-    useState(transactions);
+  const [filteredTransactions, setFilteredTransactions] = useState(transactions);
 
   const handleSearch = (value) => {
     setSearchTerm(value);
     setFilteredTransactions(
-      transactions.filter(
-        (transactions) =>
-          transactions.title.toLowerCase().includes(value.toLowerCase()) ||
-          transactions.transaction_type
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          transactions.transactions_types_tag
-            .toLowerCase()
-            .includes(value.toLowerCase())
+      transactions.filter((transaction) =>
+        transaction.amount.toLowerCase().includes(value.toLowerCase())
       )
     );
   };
@@ -67,8 +59,8 @@ const TransactionHistory = () => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2"
                     placeholder="Search"
                     required
-                    // onChange={(e) => handleSearch(e.target.value)}
-                    // value={searchTerm}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    value={searchTerm}
                   />
                 </div>
               </form>
@@ -266,17 +258,17 @@ const TransactionHistory = () => {
               <tbody>
                 <>
                   {filteredTransactions.length > 0 ? (
-                    filteredTransactions.map(() => {
+                    filteredTransactions.map((index, item) => {
                       return (
-                        <tr>
+                        <tr key={index + 1}>
                           <th
                             scope="row"
                             class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
                           >
-                            XYZ123456ABCDF
+                            {item.user}
                           </th>
                           <td class="px-4 py-3">Paypal</td>
-                          <td class="px-4 py-3">$400</td>
+                          <td class="px-4 py-3">${item.amount}</td>
                           <td class="px-4 py-3">Completed</td>
                           <td class="px-4 py-3">Edit</td>
                         </tr>

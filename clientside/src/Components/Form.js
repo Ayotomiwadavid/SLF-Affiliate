@@ -1,10 +1,134 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-// const SignUpElemant = () => {
-//   return()
-// }
 
 const Form = ({ type }) => {
+  const apiUrl = "https://softlife-baxk.onrender.com";
+  // const apiUrl = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
+  const [user, setUser] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [referralID, setReferralID] = useState("");
+  const [transactionPin, setTransactionPin] = useState("");
+  const [confirmTransactionPin, setConfirmTransactionPin] = useState("");
+
+
+  // const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword2, setShowPassword2] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  // =====================================================
+  // =====================[ SIGN IN ]=====================
+  // =====================================================
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (!email || !password) {
+      toast.error("All fields are required");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${apiUrl}/accounts/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          user: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.access);
+        toast.success("Login successful!");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else if (response) {
+        toast.error(data.detail);
+        console.log(data.detail)
+      } else {
+        // toast.error(password[0]);
+      }
+    } catch (error) {
+      console.error("An error occurred. Please try again later.", error);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  // =====================================================
+  // =====================[ SIGN UP ]=====================
+  // =====================================================
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (!email || !password || !firstName || !lastName || !username || !confirmPassword ||
+      referralID || transactionPin || confirmTransactionPin) {
+      toast.error("All fields are required");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${apiUrl}/accounts/registration/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          username,
+          email,
+          password,
+          confirmPassword,
+          package_id: referralID,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.access);
+        toast.success("Register Successful 🥳");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else if (response) {
+        toast.error(data.detail);
+        console.log(data.detail)
+      } else {
+        // toast.error(password[0]);
+      }
+    } catch (error) {
+      console.error("An error occurred. Please try again later.", error);
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   return (
     <form
       className={
@@ -17,11 +141,15 @@ const Form = ({ type }) => {
         className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
         type="email"
         placeholder="Email"
+        onChange={e => setEmail(e.target.value)}
+        value={email}
       />
       <input
         className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
         type="password"
         placeholder="Password"
+        onChange={e => setPassword(e.target.value)}
+        value={password}
       />
       {type === "signup" && (
         <>
@@ -29,23 +157,31 @@ const Form = ({ type }) => {
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="password"
             placeholder="Confirm Password"
+            onChange={e => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
           />
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="Username"
+            onChange={e => setUsername(e.target.value)}
+            value={username}
           />
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="First Name"
+            onChange={e => setFirstName(e.target.value)}
+            value={firstName}
           />
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="Last Name"
+            onChange={e => setLastName(e.target.value)}
+            value={lastName}
           />
         </>
       )}
@@ -56,17 +192,23 @@ const Form = ({ type }) => {
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="number"
             placeholder="Transaction Pin"
+            onChange={e => setTransactionPin(e.target.value)}
+            value={transactionPin}
           />
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="number"
             placeholder="Confirm Transaction Pin"
+            onChange={e => setConfirmTransactionPin(e.target.value)}
+            value={confirmTransactionPin}
           />
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="Referral Id"
+            onChange={e => setReferralID(e.target.value)}
+            value={referralID}
           />
 
           <select className='h-[55px] p-3 w-[350px] outline-none rounded-md value="" bg-white'>
@@ -74,12 +216,38 @@ const Form = ({ type }) => {
           </select>
         </>
       )}
-      <input
-        type="submit"
-        className="col-span-2 w-3/4 bg-[#F46B45] h-[45px] text-white capitalize rounded-lg font-semibold text-xl cursor-pointer transition-all duration-500 hover:scale-110"
-      />
+
+
+      {type === "login" && (
+        <button
+          onClick={handleLogin}
+          type="submit"
+          className="col-span-2 w-3/4 bg-[#F46B45] h-[45px] text-white capitalize rounded-lg font-semibold text-xl cursor-pointer transition-all duration-500 hover:scale-110"
+        >Submit</button>
+      )
+      }
+
+      {type === "signup" && (
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="col-span-2 w-3/4 bg-[#F46B45] h-[45px] text-white capitalize rounded-lg font-semibold text-xl cursor-pointer transition-all duration-500 hover:scale-110"
+        >Submit</button>
+      )
+      }
     </form>
   );
 };
 
 export default Form;
+
+
+
+
+// firstName
+// lastName
+// username
+// confirmPassword
+// referralID
+// transactionPin
+// confirmTransactionPin

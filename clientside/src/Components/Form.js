@@ -56,7 +56,7 @@ const Form = ({ type }) => {
         localStorage.setItem("token", data.access);
         toast.success("Login successful!");
         setTimeout(() => {
-          navigate("/");
+          navigate("/dashboard");
         }, 2000);
       } else if (response) {
         toast.error(data.detail);
@@ -112,7 +112,7 @@ const Form = ({ type }) => {
         localStorage.setItem("token", data.access);
         toast.success("Register Successful 🥳");
         setTimeout(() => {
-          navigate("/");
+          navigate("/dashboard");
         }, 2000);
       } else if (response) {
         toast.error(data.detail);

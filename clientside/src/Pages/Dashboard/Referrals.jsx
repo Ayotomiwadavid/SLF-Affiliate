@@ -3,6 +3,7 @@ import DashboardLayout from "../../Components/Layout/DashboardLayout";
 import Breadcrumb from "../../Components/Navigation/BreadCrumb";
 import ReferralLinkClipboard from "../../Components/Utilities/ReferralClipboard";
 import ReferredUsersTable from "../../Components/Utilities/ReferredUsers";
+import { useAuth } from "../../context/AuthContext";
 
 const referrals = [
   { name: "John Doe", referralCode: "ABC123", date: "2024-07-20" },
@@ -12,6 +13,8 @@ const referrals = [
 ];
 
 const Referrals = () => {
+  const { referralUsers } = useAuth();
+
   return (
     <>
       <DashboardLayout />

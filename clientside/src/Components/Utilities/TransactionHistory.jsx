@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
 const TransactionHistory = () => {
   const { transactions } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredTransactions, setFilteredTransactions] = useState(transactions);
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
 
-  const handleSearch = (value) => {
-    setSearchTerm(value);
-    setFilteredTransactions(
-      transactions.filter((transaction) =>
-        transaction.amount.toLowerCase().includes(value.toLowerCase())
-      )
-    );
+  console.log(filteredTransactions);
+  useEffect(() => {
+    if (Array.isArray(transactions)) {
+      setFilteredTransactions(
+        transactions.filter(
+          (transaction) =>
+            transaction.amount.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }
+  }, [transactions, searchTerm]);
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   const getStatusColor = (status) => {
@@ -58,8 +65,7 @@ const TransactionHistory = () => {
                     type="text"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2"
                     placeholder="Search"
-                    required
-                    onChange={(e) => handleSearch(e.target.value)}
+                    onChange={handleSearchChange}
                     value={searchTerm}
                   />
                 </div>
@@ -236,54 +242,52 @@ const TransactionHistory = () => {
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                <tr>
-                  <th scope="col" className="px-4 py-3">
-                    Transaction Id
-                  </th>
-                  <th scope="col" className="px-4 py-3">
-                    Model
-                  </th>
-                  <th scope="col" className="px-4 py-3">
-                    Amount
-                  </th>
-                  <th scope="col" className="px-4 py-3">
-                    Status
-                  </th>
-                  <th scope="col" className="px-4 py-3">
-                    <span className="sr-only">Actions</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+              {filteredTransactions.length > 0 ? (
                 <>
-                  {filteredTransactions.length > 0 ? (
-                    filteredTransactions.map((index, item) => {
-                      return (
-                        <tr key={index + 1}>
-                          <th
-                            scope="row"
-                            class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
-                          >
-                            {item.user}
-                          </th>
-                          <td class="px-4 py-3">Paypal</td>
-                          <td class="px-4 py-3">${item.amount}</td>
-                          <td class="px-4 py-3">Completed</td>
-                          <td class="px-4 py-3">Edit</td>
-                        </tr>
-                      );
-                    })
-                  ) : (
-                    <div className="w-full p-1 mt-12 flex-col justify-center items-center gap-6 inline-flex">
-                      <img className="" src="/social-03.svg" />
-                      <div className="text-zinc-400 text-xs font-normal">
-                        Transactions not found
-                      </div>
-                    </div>
-                  )}
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                      <th scope="col" className="px-4 py-3">
+                        Transaction Id
+                      </th>
+                      <th scope="col" className="px-4 py-3">
+                        Model
+                      </th>
+                      <th scope="col" className="px-4 py-3">
+                        Amount
+                      </th>
+                      <th scope="col" className="px-4 py-3">
+                        Status
+                      </th>
+                      <th scope="col" className="px-4 py-3">
+                        <span className="sr-only">Actions</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredTransactions.map((item, index) => (
+                      <tr key={index}>
+                        <th
+                          scope="row"
+                          className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
+                        >
+                          {item.user}
+                        </th>
+                        <td className="px-4 py-3">{item.paystack_reference}</td>
+                        <td className="px-4 py-3">${item.amount}</td>
+                        <td className="px-4 py-3">Completed</td>
+                        <td className="px-4 py-3">Edit</td>
+                      </tr>
+                    ))}
+                  </tbody>
                 </>
-              </tbody>
+              ) : (
+                <div className="w-full p-1 my-12 flex-col justify-center items-center gap-6 inline-flex">
+                  <img className="" src="/social-03.svg" />
+                  <div className="text-zinc-400 text-xs font-normal">
+                    Transactions not found
+                  </div>
+                </div>
+              )}
             </table>
           </div>
           <nav

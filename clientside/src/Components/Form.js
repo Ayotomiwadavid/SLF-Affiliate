@@ -113,14 +113,15 @@ const Form = ({ type }) => {
           email,
           password,
           confirmPassword,
-          package_id: selectedPackage,
+          package_id: referralID,
+          // package_id: selectedPackage,
         }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.access);
+        localStorage.setItem("token", data.access_token);
         toast.success("Register Successful 🥳");
         setTimeout(() => {
           navigate("/dashboard");

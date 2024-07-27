@@ -16,6 +16,7 @@ const AuthContextProvider = ({ children }) => {
   const [earnings, setEarnings] = useState("");
 
   const [transactions, setTransaction] = useState([]);
+  const [packageList, setPackageList] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
@@ -72,6 +73,32 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
+  const fetchPackages = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/all_packages/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setPackageList(data);
+          localStorage.setItem(
+            "packageList",
+            JSON.stringify(data)
+          );
+          // console.log(data);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
 
   const fetchReferral = async () => {
     const response = await fetch(
@@ -106,13 +133,9 @@ const AuthContextProvider = ({ children }) => {
     fetchBalance();
     fetchTransaction();
     fetchReferral();
+    fetchPackages();
   }, []);
 
-  // const logOut = () => {
-  //   signOut(auth);
-  //   localStorage.removeItem("userInfo");
-  //   setUser("");
-  // };
 
   // Retrieve user details from localStorage
   useEffect(() => {
@@ -134,6 +157,7 @@ const AuthContextProvider = ({ children }) => {
         referralUsers,
         earnings,
         transactions,
+        packageList,
         // loading,
         // logOut,
       }}

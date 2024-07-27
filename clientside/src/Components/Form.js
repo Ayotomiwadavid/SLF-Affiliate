@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 
 const Form = ({ type }) => {
   const apiUrl = "https://softlife-baxk.onrender.com";
   // const apiUrl = import.meta.env.VITE_API_URL;
+  const { packageList } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState("");
 
@@ -15,14 +17,23 @@ const Form = ({ type }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  // const [package_id, setPackageId] = useState("");
   const [referralID, setReferralID] = useState("");
   const [transactionPin, setTransactionPin] = useState("");
   const [confirmTransactionPin, setConfirmTransactionPin] = useState("");
 
+  const [selectedPackage, setSelectedPackage] = useState("");
+
   const [errorEmail, setErrorEmail] = useState("");
+  const [errorUsername, setErrorUsername] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
+
+
+  const handlePackageChange = (event) => {
+    setSelectedPackage(event.target.value);
+  };
 
   // =====================================================
   // =====================[ SIGN IN ]=====================
@@ -102,7 +113,7 @@ const Form = ({ type }) => {
           email,
           password,
           confirmPassword,
-          package_id: referralID,
+          package_id: selectedPackage,
         }),
       });
 
@@ -115,9 +126,10 @@ const Form = ({ type }) => {
           navigate("/dashboard");
         }, 2000);
       } else if (response) {
-        toast.error(data.detail);
+        // toast.error(data.username);
+        setErrorUsername(data.username);
         setErrorPassword(password[0])
-        console.log(password[0])
+        // console.log(data.username)
       } else {
         // toast.error(password[0]);
       }
@@ -168,13 +180,16 @@ const Form = ({ type }) => {
             value={confirmPassword}
           />
 
-          <input
-            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-            type="text"
-            placeholder="Username"
-            onChange={e => setUsername(e.target.value)}
-            value={username}
-          />
+          <div>
+            <input
+              className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+              type="text"
+              placeholder="Username"
+              onChange={e => setUsername(e.target.value)}
+              value={username}
+            />
+            <small>{errorUsername && <p className="text-[red] mb-3 mt-1">user with this username already exists.</p>}</small>
+          </div>
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
@@ -195,7 +210,7 @@ const Form = ({ type }) => {
 
       {type === "signup" && (
         <>
-          <input
+          {/* <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="number"
             placeholder="Transaction Pin"
@@ -208,7 +223,7 @@ const Form = ({ type }) => {
             placeholder="Confirm Transaction Pin"
             onChange={e => setConfirmTransactionPin(e.target.value)}
             value={confirmTransactionPin}
-          />
+          /> */}
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
@@ -218,8 +233,19 @@ const Form = ({ type }) => {
             value={referralID}
           />
 
-          <select className='h-[55px] p-3 w-[350px] outline-none rounded-md value="" bg-white'>
-            <option>Choose Your Country</option>
+          <select
+            className="h-[55px] p-3 w-[350px] outline-none rounded-md bg-white"
+            value={selectedPackage}
+            onChange={handlePackageChange}
+          >
+            <option value="" disabled>
+              Choose Package
+            </option>
+            {packageList.map((pkg) => (
+              <option key={pkg.id} value={pkg.price}>
+                {pkg.name} ({pkg.price})
+              </option>
+            ))}
           </select>
         </>
       )}

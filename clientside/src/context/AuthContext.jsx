@@ -141,7 +141,7 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setReferral(data.referral_count);
-          setReferralUsers(data.referred_users[0]);
+          setReferralUsers(data.referred_users);
           setEarnings(data.total_earnings)
           localStorage.setItem(
             "referral",

@@ -4,8 +4,11 @@ import InvestmentPlans from "../../Components/Utilities/InvesmentPlans";
 import Footer from "../../Components/Navigation/Footer";
 import Breadcrumb from "../../Components/Navigation/BreadCrumb";
 import TransactionButtonGroup from "../../Components/Utilities/TransactionButtonGroup";
+import { useAuth } from "../../context/AuthContext";
 
 const Plans = () => {
+  const { userPackage } = useAuth();
+
   return (
     <div>
       <DashboardLayout />
@@ -27,11 +30,11 @@ const Plans = () => {
                     <span className="text-gray-300">Current Plan</span>
                   </div>
                   <h1 className="text-4xl md:text-9xl text-white font-medium">
-                    Level 1
+                    {userPackage.package_name}
                   </h1>
-                  <p className="text-gray-100 font-bold text-sm">
+                  {/* <p className="text-gray-100 font-bold text-sm">
                     Lorem ipsum dolor sit amet consectetur.
-                  </p>
+                  </p> */}
 
                   <div className="mt-8">
                     <TransactionButtonGroup />

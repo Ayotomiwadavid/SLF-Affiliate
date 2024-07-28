@@ -59,7 +59,7 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setTransaction(data.results[0]);
+          setTransaction(data.results);
           localStorage.setItem(
             "transactions",
             JSON.stringify(data.results[0])

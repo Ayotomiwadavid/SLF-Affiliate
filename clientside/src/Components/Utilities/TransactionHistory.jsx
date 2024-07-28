@@ -6,7 +6,7 @@ const TransactionHistory = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredTransactions, setFilteredTransactions] = useState([]);
 
-  console.log(filteredTransactions);
+  // console.log(filteredTransactions);
   useEffect(() => {
     if (Array.isArray(transactions)) {
       setFilteredTransactions(
@@ -24,14 +24,14 @@ const TransactionHistory = () => {
 
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
-      case "completed":
-        return "text-green-600";
+      case "Completed":
+        return "green-600";
       case "pending":
-        return "text-orange-600";
+        return "orange-600";
       case "failed":
-        return "text-red-600";
+        return "red-600";
       default:
-        return "text-gray-700";
+        return "gray-700";
     }
   };
 
@@ -242,7 +242,7 @@ const TransactionHistory = () => {
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              {filteredTransactions.length > 0 ? (
+              {filteredTransactions.length >= 0 ? (
                 <>
                   <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -272,9 +272,9 @@ const TransactionHistory = () => {
                         >
                           {item.user}
                         </th>
-                        <td className="px-4 py-3">{item.paystack_reference}</td>
+                        <td className="px-4 py-3">{item.transaction_type}</td>
                         <td className="px-4 py-3">${item.amount}</td>
-                        <td className="px-4 py-3">Completed</td>
+                        <td className={`px-4 py-3 text-${getStatusColor}`}>Completed</td>
                         <td className="px-4 py-3">Edit</td>
                       </tr>
                     ))}

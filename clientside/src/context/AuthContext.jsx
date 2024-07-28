@@ -17,6 +17,7 @@ const AuthContextProvider = ({ children }) => {
 
   const [transactions, setTransaction] = useState([]);
   const [packageList, setPackageList] = useState([]);
+  const [userPackage, setUserPackage] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
@@ -100,6 +101,33 @@ const AuthContextProvider = ({ children }) => {
   };
 
 
+  const fetchUserpackage = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/userpackage/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setUserPackage(data[0]);
+          localStorage.setItem(
+            "userPackage",
+            JSON.stringify(data)
+          );
+          // console.log(data);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+
   const fetchReferral = async () => {
     const response = await fetch(
       `${apiUrl}/finances/referral/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -134,6 +162,7 @@ const AuthContextProvider = ({ children }) => {
     fetchTransaction();
     fetchReferral();
     fetchPackages();
+    fetchUserpackage()
   }, []);
 
 
@@ -158,6 +187,7 @@ const AuthContextProvider = ({ children }) => {
         earnings,
         transactions,
         packageList,
+        userPackage,
         // loading,
         // logOut,
       }}

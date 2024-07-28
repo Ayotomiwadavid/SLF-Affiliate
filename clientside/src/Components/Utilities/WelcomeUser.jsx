@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TransactionButtonGroup from "./TransactionButtonGroup";
+import { useAuth } from "../../context/AuthContext";
 
 const WelcomeUser = () => {
-  let user = {
-    username: "Johnny Deep",
-  };
+  const { userPackage } = useAuth();
+  const [greeting, setGreeting] = useState("");
+
+  useEffect(() => {
+    const getCurrentTime = () => {
+      const now = new Date();
+      const currentHour = now.getHours();
+
+      if (currentHour >= 0 && currentHour < 12) {
+        setGreeting("Good Morning");
+      } else if (currentHour >= 12 && currentHour < 18) {
+        setGreeting("Good Afternoon");
+      } else {
+        setGreeting("Good Evening");
+      }
+    };
+
+    getCurrentTime();
+  }, []);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-2 mt-4">
       <div className="col-span-2 h-78 md:h-74 pb-10 flex justify-start items-center p-5 py-8 rounded-2xl bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600">
@@ -14,11 +32,11 @@ const WelcomeUser = () => {
             <span className="text-gray-300">Current Plan</span>
           </div>
           <h1 className="text-4xl md:text-9xl text-white font-medium">
-            Level 1
+            {userPackage.package_name}
           </h1>
-          <p className="text-gray-100 font-bold text-sm">
+          {/* <p className="text-gray-100 font-bold text-sm">
             Lorem ipsum dolor sit amet consectetur.
-          </p>
+          </p> */}
 
           <div className="mt-8">
             <TransactionButtonGroup />
@@ -62,7 +80,7 @@ const WelcomeUser = () => {
             />
           </div>
           <p className="text-xl text-gray-900 font-medium">
-            Good Morning Johhny
+            {greeting}, Johhny
           </p>
           <p className="text-gray-300 text-md">
             Lorem ipsum dolor sit, amet consectetu.

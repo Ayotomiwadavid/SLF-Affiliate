@@ -7,7 +7,11 @@ import { toast } from "react-toastify";
 const Form = ({ type }) => {
   const apiUrl = "https://softlife-baxk.onrender.com";
   // const apiUrl = import.meta.env.VITE_API_URL;
-  const { packageList } = useAuth();
+  const { packageList, fetchBalance,
+    fetchTransaction,
+    fetchReferral,
+    fetchPackages,
+    fetchUserpackage, } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState("");
 
@@ -69,6 +73,11 @@ const Form = ({ type }) => {
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
+        fetchBalance();
+        fetchTransaction();
+        fetchReferral();
+        fetchPackages();
+        fetchUserpackage()
       } else if (response) {
         toast.error(data.detail);
         console.log(data.detail)

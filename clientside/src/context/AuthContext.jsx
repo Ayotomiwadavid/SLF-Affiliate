@@ -47,7 +47,6 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-
   const fetchTransaction = async () => {
     const response = await fetch(
       `${apiUrl}/finances/transaction-history/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -61,10 +60,7 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setTransaction(data.results);
-          localStorage.setItem(
-            "transactions",
-            JSON.stringify(data.results[0])
-          );
+          localStorage.setItem("transactions", JSON.stringify(data.results[0]));
           // console.log(data.results[0].amount);
           setLoading(true);
         });
@@ -87,10 +83,7 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setPackageList(data);
-          localStorage.setItem(
-            "packageList",
-            JSON.stringify(data)
-          );
+          localStorage.setItem("packageList", JSON.stringify(data));
           // console.log(data);
           setLoading(true);
         });
@@ -99,7 +92,6 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
-
 
   const fetchUserpackage = async () => {
     const response = await fetch(
@@ -114,10 +106,7 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setUserPackage(data[0]);
-          localStorage.setItem(
-            "userPackage",
-            JSON.stringify(data)
-          );
+          localStorage.setItem("userPackage", JSON.stringify(data));
           // console.log(data);
           setLoading(true);
         });
@@ -126,7 +115,6 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
-
 
   const fetchReferral = async () => {
     const response = await fetch(
@@ -142,11 +130,8 @@ const AuthContextProvider = ({ children }) => {
         response.json().then((data) => {
           setReferral(data.referral_count);
           setReferralUsers(data.referred_users);
-          setEarnings(data.total_earnings)
-          localStorage.setItem(
-            "referral",
-            JSON.stringify(data.results)
-          );
+          setEarnings(data.total_earnings);
+          localStorage.setItem("referral", JSON.stringify(data.results));
           // console.log(data.referred_users[0]);
           setLoading(true);
         });
@@ -156,15 +141,13 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-
   useEffect(() => {
     fetchBalance();
     fetchTransaction();
     fetchReferral();
     fetchPackages();
-    fetchUserpackage()
+    fetchUserpackage();
   }, []);
-
 
   // Retrieve user details from localStorage
   useEffect(() => {
@@ -188,6 +171,11 @@ const AuthContextProvider = ({ children }) => {
         transactions,
         packageList,
         userPackage,
+        fetchBalance,
+        fetchTransaction,
+        fetchReferral,
+        fetchPackages,
+        fetchUserpackage,
         // loading,
         // logOut,
       }}

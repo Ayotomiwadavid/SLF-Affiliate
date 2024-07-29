@@ -102,9 +102,9 @@ const MyAccount = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -179,7 +179,7 @@ const MyAccount = () => {
                     2024
                   </div>
                 </div>
-                
+
                 <div className="chart col my-4 sm:my-0">
                   <DashboardChart />
                 </div>

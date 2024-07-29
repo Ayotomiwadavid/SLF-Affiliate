@@ -24,7 +24,7 @@ const WelcomeUser = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-2 mt-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-2 mt-4">
       <div className="col-span-2 h-78 md:h-74 pb-10 flex justify-start items-center p-5 py-8 rounded-2xl bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600">
         <div className="">
           <div className="date font-semibold text-xs pt-4 sm:text-sm">
@@ -48,7 +48,7 @@ const WelcomeUser = () => {
                 </div> */}
       </div>
 
-      <div className="hidden md:block col bg-white shadow-lg rounded-2xl border">
+      {/* <div className="hidden md:block col bg-white shadow-lg rounded-2xl border">
         <div className="flex justify-between items-center p-4">
           <h1 className="text-lg font-semibold">Stats</h1>
           <svg
@@ -69,7 +69,7 @@ const WelcomeUser = () => {
               <circle cx="8" cy="13.5" r=".75" />
             </g>
           </svg>
-          {/* <h1 className="text-md">Stats</h1> */}
+            <h1 className="text-md">Stats</h1>
         </div>
         <div className="flex flex-col items-center p-5">
           <div className=" bg-purple-200 rounded-full border border-4 border-purple-600 flex items-center justify-center mb-3">
@@ -86,7 +86,7 @@ const WelcomeUser = () => {
             Lorem ipsum dolor sit, amet consectetu.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

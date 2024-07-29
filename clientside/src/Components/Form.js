@@ -113,8 +113,8 @@ const Form = ({ type }) => {
           email,
           password,
           confirmPassword,
-          package_id: referralID,
-          // package_id: selectedPackage,
+          // package_id: referralID,
+          package_id: selectedPackage,
         }),
       });
 

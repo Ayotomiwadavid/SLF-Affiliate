@@ -98,7 +98,6 @@ const ReferralIcon = () => (
 );
 
 const MyAccount = () => {
-
   let report = [
     { title: "Wallet Balance", value: "20k", icon: <WalletBalanceIcon /> },
     { title: "Deposits", value: "20k", icon: <DepositsIcon /> },
@@ -147,14 +146,10 @@ const MyAccount = () => {
                 <h1 className="text-gray-900 text-2xl font-bold py-4">
                   My Portfolio
                 </h1>
-                <div className="date font-semibold text-xs sm:text-sm">
-                  {" "}
-                  <span className="text-gray-300">Wednesday</span>, 14th June
-                  2024
-                </div>
+                <div></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 ">
+              <div className="flex flex-col">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                   {report.map((item, index) => (
                     <DashboardReportCard
                       key={index}
@@ -163,7 +158,18 @@ const MyAccount = () => {
                     />
                   ))}
                 </div>
+              </div>
 
+              <div>
+                <div className="flex">
+                  <div></div>
+                  <div className="date font-semibold text-xs sm:text-sm">
+                    {" "}
+                    <span className="text-gray-300">Wednesday</span>, 14th June
+                    2024
+                  </div>
+                </div>
+                
                 <div className="chart col my-4 sm:my-0">
                   <DashboardChart />
                 </div>

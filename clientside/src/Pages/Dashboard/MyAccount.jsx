@@ -1,11 +1,11 @@
 import React, { PureComponent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../Components/Layout/DashboardLayout";
 import DashboardReportCard from "../../Components/Utilities/DashboardReportCard";
 import WelcomeUser from "../../Components/Utilities/WelcomeUser";
 import TransactionHistory from "../../Components/Utilities/TransactionHistory";
 import DashboardChart from "../../Components/Chart/DashboardChart";
 import Footer from "../../Components/Navigation/Footer";
-import { useNavigate } from "react-router-dom";
 
 const WalletBalanceIcon = () => (
   <svg
@@ -159,7 +159,7 @@ const MyAccount = () => {
                 <div></div>
               </div>
               <div className="flex flex-col">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {report.map((item, index) => (
                     <DashboardReportCard
                       key={index}
@@ -171,7 +171,7 @@ const MyAccount = () => {
               </div>
 
               <div>
-                <div className="flex">
+                <div className="flex mt-12">
                   <div></div>
                   <div className="date font-semibold text-xs sm:text-sm">
                     {" "}

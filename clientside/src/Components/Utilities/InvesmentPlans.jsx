@@ -1,24 +1,28 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ConfirmPlanChange, useConfirmPlanChange } from "./ConfirmPlanChange";
 import { useAuth } from "../../context/AuthContext";
 
 const InvestmentPlans = () => {
+  const navigate = useNavigate();
   const { userPackage, packageList } = useAuth();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPackageId, setSelectedPackageId] = useState(null);
 
-  // const plans = [
-  //   { title: "Silver Plan", details: "Details about Plan A." },
-  //   { title: "Bronze Plan", details: "Details about Plan B." },
-  //   { title: "Copper Plan", details: "Details about Plan C." },
-  //   { title: "Premium Plan", details: "Details about Plan D." },
-  // ];
+  const handleConfirm = () => {
+    navigate(`/deposit?packagePrice=${selectedPackageId}`);
+  };
 
-  const { isOpen, openModal, closeModal, handleConfirm } = useConfirmPlanChange(
+  const { isOpen, openModal, closeModal } = useConfirmPlanChange(
     () => {
       console.log("Confirmed!");
       // Add your custom confirmation logic here
     }
   );
+
+  const handleOpenModal = (packageId) => {
+    setSelectedPackageId(packageId);
+    openModal();
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -36,20 +40,11 @@ const InvestmentPlans = () => {
             <p className={`text-gray-700 mb-4`}>{plan.description}</p>
 
             <button
-              onClick={openModal}
+              onClick={() => handleOpenModal(plan.price)}
               className="bg-purple-900 text-white px-4 py-2 rounded"
             >
               Choose plan
             </button>
-            {/* <div className="flex justify-center m-5">
-              <button
-                onClick={openModal}
-                className="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                type="button"
-              >
-                Show delete confirmation
-              </button>
-            </div> */}
           </div>
         ))}
       </div>
@@ -63,35 +58,3 @@ const InvestmentPlans = () => {
 };
 
 export default InvestmentPlans;
-
-
-// let packageList = [
-//   {
-//     id: 1,
-//     description: "Level 1",
-//     level: "LEVEL1",
-//     name: "Level 1",
-//     price: "1000.00",
-//   },
-//   {
-//     id: 2,
-//     description: "Level 2",
-//     level: "LEVEL2",
-//     name: "Level 2",
-//     price: "2000.00",
-//   },
-//   {
-//     id: 3,
-//     description: "Level 3",
-//     level: "LEVEL3",
-//     name: "Level 3",
-//     price: "3000.00",
-//   },
-//   {
-//     id: 4,
-//     description: "Premium",
-//     level: "PREMIUM",
-//     name: "Premium",
-//     price: "5000.00",
-//   },
-// ];

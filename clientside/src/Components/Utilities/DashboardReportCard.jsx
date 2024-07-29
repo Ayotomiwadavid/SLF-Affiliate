@@ -31,7 +31,7 @@ const DashboardReportCard = ({ report, index }) => {
 
   return (
     <div
-      className={`flex gap-4 items-center max-w-sm p-6 border border-gray-200 rounded-lg shadow ${
+      className={`flex gap-3 items-center max-w-sm p-4 border border-gray-200 rounded-lg shadow ${
         isFirstCard ? "bg-purple-800" : "bg-white"
       }`}
     >

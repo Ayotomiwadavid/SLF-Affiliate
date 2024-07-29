@@ -1,47 +1,70 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
-
 const Form = ({ type }) => {
   const apiUrl = "https://softlife-baxk.onrender.com";
-  // const apiUrl = import.meta.env.VITE_API_URL;
-  const { fetchBalance,
+  const {
+    fetchBalance,
     fetchTransaction,
     fetchReferral,
     fetchPackages,
-    fetchUserpackage, } = useAuth();
+    fetchUserpackage,
+  } = useAuth();
   const navigate = useNavigate();
-  const [user, setUser] = useState("");
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [package_id, setPackageId] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
   const [referralID, setReferralID] = useState("");
-  const [transactionPin, setTransactionPin] = useState("");
-  const [confirmTransactionPin, setConfirmTransactionPin] = useState("");
-
   const [selectedPackage, setSelectedPackage] = useState("");
-
   const [errorEmail, setErrorEmail] = useState("");
   const [errorUsername, setErrorUsername] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
 
+  const packageList = [
+    {
+      id: 1,
+      description: "Level 1",
+      level: "LEVEL1",
+      name: "Level 1",
+      price: "1000.00",
+    },
+    {
+      id: 2,
+      description: "Level 2",
+      level: "LEVEL2",
+      name: "Level 2",
+      price: "2000.00",
+    },
+    {
+      id: 3,
+      description: "Level 3",
+      level: "LEVEL3",
+      name: "Level 3",
+      price: "3000.00",
+    },
+    {
+      id: 4,
+      description: "Premium",
+      level: "PREMIUM",
+      name: "Premium",
+      price: "5000.00",
+    },
+  ];
 
   const handlePackageChange = (event) => {
     setSelectedPackage(event.target.value);
   };
 
-  // =====================================================
-  // =====================[ SIGN IN ]=====================
-  // =====================================================
+  const getSelectedPackagePrice = (packageId) => {
+    const selectedPkg = packageList.find((pkg) => pkg.id === parseInt(packageId));
+    return selectedPkg ? selectedPkg.price : "";
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -72,18 +95,17 @@ const Form = ({ type }) => {
         toast.success("Login successful!");
         setTimeout(() => {
           navigate("/dashboard");
-          // window.location.href = '/dashboard'
         }, 2000);
         fetchBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
-        fetchUserpackage()
+        fetchUserpackage();
       } else if (response) {
         toast.error(data.detail);
-        console.log(data.detail)
+        console.log(data.detail);
       } else {
-        // toast.error(password[0]);
+        toast.error("An error occurred. Please try again later.");
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);
@@ -93,16 +115,16 @@ const Form = ({ type }) => {
     }
   };
 
-
-  // =====================================================
-  // =====================[ SIGN UP ]=====================
-  // =====================================================
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (!email || !password || !firstName || !lastName || !username || !confirmPassword
-      // referralID || transactionPin || confirmTransactionPin
+    if (
+      !email ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !username ||
+      !confirmPassword
     ) {
       toast.error("All fields are required");
       setLoading(false);
@@ -114,7 +136,6 @@ const Form = ({ type }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           firstName,
@@ -123,7 +144,6 @@ const Form = ({ type }) => {
           email,
           password,
           confirmPassword,
-          // package_id: referralID,
           package_id: selectedPackage,
         }),
       });
@@ -134,20 +154,19 @@ const Form = ({ type }) => {
         localStorage.setItem("token", data.access_token);
         toast.success("Register Successful 🥳");
         setTimeout(() => {
-          navigate("/deposit");
+          const packagePrice = getSelectedPackagePrice(selectedPackage);
+          navigate(`/deposit?packagePrice=${packagePrice}`);
         }, 2000);
         fetchBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
-        fetchUserpackage()
+        fetchUserpackage();
       } else if (response) {
-        // toast.error(data.username);
         setErrorUsername(data.username);
-        setErrorPassword(password[0])
-        // console.log(data.username)
+        setErrorPassword(password[0]);
       } else {
-        // toast.error(password[0]);
+        toast.error("An error occurred. Please try again later.");
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);
@@ -156,7 +175,6 @@ const Form = ({ type }) => {
       setLoading(false);
     }
   };
-
 
   return (
     <form
@@ -170,7 +188,7 @@ const Form = ({ type }) => {
         className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
         type="email"
         placeholder="Email"
-        onChange={e => setEmail(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
 
@@ -179,12 +197,17 @@ const Form = ({ type }) => {
           className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
           type="password"
           placeholder="Password"
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-        <small>{errorPassword && <p className="text-[red] mb-3 mt-1">Ensure this field has at least 8 characters.</p>}</small>
+        <small>
+          {errorPassword && (
+            <p className="text-[red] mb-3 mt-1">
+              Ensure this field has at least 8 characters.
+            </p>
+          )}
+        </small>
       </div>
-
 
       {type === "signup" && (
         <>
@@ -192,7 +215,7 @@ const Form = ({ type }) => {
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="password"
             placeholder="Confirm Password"
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             value={confirmPassword}
           />
 
@@ -201,24 +224,30 @@ const Form = ({ type }) => {
               className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
               type="text"
               placeholder="Username"
-              onChange={e => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               value={username}
             />
-            <small>{errorUsername && <p className="text-[red] mb-3 mt-1">user with this username already exists.</p>}</small>
+            <small>
+              {errorUsername && (
+                <p className="text-[red] mb-3 mt-1">
+                  user with this username already exists.
+                </p>
+              )}
+            </small>
           </div>
 
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="First Name"
-            onChange={e => setFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
           />
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="Last Name"
-            onChange={e => setLastName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
             value={lastName}
           />
         </>
@@ -226,26 +255,11 @@ const Form = ({ type }) => {
 
       {type === "signup" && (
         <>
-          {/* <input
-            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-            type="number"
-            placeholder="Transaction Pin"
-            onChange={e => setTransactionPin(e.target.value)}
-            value={transactionPin}
-          />
-          <input
-            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-            type="number"
-            placeholder="Confirm Transaction Pin"
-            onChange={e => setConfirmTransactionPin(e.target.value)}
-            value={confirmTransactionPin}
-          /> */}
-
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
             placeholder="Referral Id"
-            onChange={e => setReferralID(e.target.value)}
+            onChange={(e) => setReferralID(e.target.value)}
             value={referralID}
           />
 
@@ -266,7 +280,6 @@ const Form = ({ type }) => {
         </>
       )}
 
-
       {type === "login" && (
         <button
           onClick={handleLogin}
@@ -280,9 +293,9 @@ const Form = ({ type }) => {
             </div>
           ) : (
             "Log in"
-          )}</button>
-      )
-      }
+          )}
+        </button>
+      )}
 
       {type === "signup" && (
         <button
@@ -297,52 +310,11 @@ const Form = ({ type }) => {
             </div>
           ) : (
             "Sign Up"
-          )}</button>
-      )
-      }
+          )}
+        </button>
+      )}
     </form>
   );
 };
 
 export default Form;
-
-
-let packageList = [
-  {
-    id: 1,
-    description: "Level 1",
-    level: "LEVEL1",
-    name: "Level 1",
-    price: "1000.00"
-  },
-  {
-    id: 2,
-    description: "Level 2",
-    level: "LEVEL2",
-    name: "Level 2",
-    price: "2000.00"
-  },
-  {
-    id: 3,
-    description: "Level 3",
-    level: "LEVEL3",
-    name: "Level 3",
-    price: "3000.00"
-  },
-  {
-    id: 4,
-    description: "Premium",
-    level: "PREMIUM",
-    name: "Premium",
-    price: "5000.00"
-  },
-];
-
-
-// firstName
-// lastName
-// username
-// confirmPassword
-// referralID
-// transactionPin
-// confirmTransactionPin

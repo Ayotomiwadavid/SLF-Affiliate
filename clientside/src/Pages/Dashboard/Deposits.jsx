@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import DashboardLayout from "../../Components/Layout/DashboardLayout";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Deposit = () => {
   const apiUrl = "https://softlife-baxk.onrender.com";
-  // const apiUrl = import.meta.env.VITE_API_URL;
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const packagePrice = queryParams.get("packagePrice");
+
   const navigate = useNavigate();
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState(packagePrice || "");
   const [account, setAccount] = useState("");
 
   const [errorEmail, setErrorEmail] = useState("");
@@ -15,13 +18,9 @@ const Deposit = () => {
 
   const [loading, setLoading] = useState(false);
   const [recentDeposits, setRecentDeposits] = useState([
-    { amount: '100', account: 'Savings', date: '2024-07-19' },
-    { amount: '200', account: 'Checking', date: '2024-07-18' },
-]);
-
-  // =====================================================
-  // =====================[ SIGN IN ]=====================
-  // =====================================================
+    { amount: "100", account: "Savings", date: "2024-07-19" },
+    { amount: "200", account: "Checking", date: "2024-07-18" },
+  ]);
 
   const handleDeposit = async (e) => {
     e.preventDefault();
@@ -47,16 +46,17 @@ const Deposit = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem("token", data.access);
-        toast.success("Login successful!");
-        //   setTimeout(() => {
-        //     navigate("/");
-        //   }, 2000);
-      } else if (response) {
-        toast.error(data.detail);
-        console.log(data.detail);
+        toast.success("Deposit successful!");
+        const newDeposit = {
+          amount,
+          account: "Savings", // Or the correct account type
+          date: new Date().toISOString().split("T")[0],
+        };
+        setRecentDeposits([newDeposit, ...recentDeposits]);
+        setAmount("");
+        setAccount("");
       } else {
-        // toast.error(password[0]);
+        toast.error(data.detail);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);
@@ -65,17 +65,6 @@ const Deposit = () => {
       setLoading(false);
     }
   };
-
-  // const handleDeposit = () => {
-  //     const newDeposit = {
-  //         amount,
-  //         account,
-  //         date: new Date().toISOString().split('T')[0],
-  //     };
-  //     setRecentDeposits([newDeposit, ...recentDeposits]);
-  //     setAmount('');
-  //     setAccount('');
-  // };
 
   return (
     <div className="">
@@ -99,12 +88,20 @@ const Deposit = () => {
               className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-          
+
           <button
             onClick={handleDeposit}
             className="bg-blue-500 text-white px-4 py-2 rounded"
+            disabled={loading}
           >
-            Deposit
+            {loading ? (
+              <div className="flex gap-3 justify-center items-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-4 border-white"></div>
+                Loading...
+              </div>
+            ) : (
+              "Deposit"
+            )}
           </button>
         </div>
 

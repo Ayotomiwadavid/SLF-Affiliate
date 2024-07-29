@@ -32,7 +32,7 @@ const WelcomeUser = () => {
             <span className="text-gray-300">Current Plan</span>
           </div>
           <h1 className="text-4xl md:text-9xl text-white font-medium">
-            {userPackage ? <>{userPackage.package_name}</> : <>No L</>}
+            {userPackage ? <>{userPackage.package_name}</> : <>No LEVEL</>}
           </h1>
           {/* <p className="text-gray-100 font-bold text-sm">
             Lorem ipsum dolor sit amet consectetur.

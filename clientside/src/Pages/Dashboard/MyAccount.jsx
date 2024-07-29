@@ -1,10 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect } from "react";
 import DashboardLayout from "../../Components/Layout/DashboardLayout";
 import DashboardReportCard from "../../Components/Utilities/DashboardReportCard";
 import WelcomeUser from "../../Components/Utilities/WelcomeUser";
 import TransactionHistory from "../../Components/Utilities/TransactionHistory";
 import DashboardChart from "../../Components/Chart/DashboardChart";
 import Footer from "../../Components/Navigation/Footer";
+import { useNavigate } from "react-router-dom";
 
 const WalletBalanceIcon = () => (
   <svg
@@ -98,6 +99,15 @@ const ReferralIcon = () => (
 );
 
 const MyAccount = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
   let report = [
     { title: "Wallet Balance", value: "20k", icon: <WalletBalanceIcon /> },
     { title: "Deposits", value: "20k", icon: <DepositsIcon /> },

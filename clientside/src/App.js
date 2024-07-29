@@ -14,14 +14,6 @@ import Profile from "./Pages/Dashboard/Profile";
 
 
 const App = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login');
-    }
-  }, [navigate]);
 
   return (
     <Routes>

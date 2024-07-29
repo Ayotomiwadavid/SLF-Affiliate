@@ -57,7 +57,7 @@ const Form = ({ type }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           user: email,
@@ -72,6 +72,7 @@ const Form = ({ type }) => {
         toast.success("Login successful!");
         setTimeout(() => {
           navigate("/dashboard");
+          // window.location.href = '/dashboard'
         }, 2000);
         fetchBalance();
         fetchTransaction();
@@ -135,6 +136,11 @@ const Form = ({ type }) => {
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
+        fetchBalance();
+        fetchTransaction();
+        fetchReferral();
+        fetchPackages();
+        fetchUserpackage()
       } else if (response) {
         // toast.error(data.username);
         setErrorUsername(data.username);

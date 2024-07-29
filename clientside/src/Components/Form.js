@@ -71,7 +71,7 @@ const Form = ({ type }) => {
         localStorage.setItem("token", data.access);
         toast.success("Login successful!");
         setTimeout(() => {
-          navigate("/deposit");
+          navigate("/dashboard");
           // window.location.href = '/dashboard'
         }, 2000);
         fetchBalance();
@@ -134,7 +134,7 @@ const Form = ({ type }) => {
         localStorage.setItem("token", data.access_token);
         toast.success("Register Successful 🥳");
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("/deposit");
         }, 2000);
         fetchBalance();
         fetchTransaction();

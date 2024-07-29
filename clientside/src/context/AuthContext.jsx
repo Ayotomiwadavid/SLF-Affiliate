@@ -70,9 +70,10 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-  const fetchPackages = async () => {
-    const response = await fetch(
-      `${apiUrl}/finances/all_packages/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+  const fetchPackages = () => {
+    // const response = await 
+    fetch(
+      `${apiUrl}/finances/all_packages/`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +85,6 @@ const AuthContextProvider = ({ children }) => {
         response.json().then((data) => {
           setPackageList(data);
           localStorage.setItem("packageList", JSON.stringify(data));
-          // console.log(data);
           setLoading(true);
         });
       } else if (response) {

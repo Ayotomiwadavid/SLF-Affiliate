@@ -14,6 +14,7 @@ import Profile from "./Pages/Dashboard/Profile";
 
 
 const App = () => {
+  const navigate = useNavigate();
 
   return (
     <Routes>

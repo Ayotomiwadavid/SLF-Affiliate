@@ -21,6 +21,7 @@ const App = () => {
   //     navigate('/login');
   //   }
   // }, [navigate]);
+  
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />

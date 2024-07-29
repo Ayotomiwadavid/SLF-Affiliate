@@ -80,10 +80,10 @@ const Deposit = () => {
   return (
     <div className="">
       <DashboardLayout />
-      <div className="container sm:ml-64 mt-16 mx-auto p-4">
+      <div className="container sm:ml-64 mt-16 mx-auto p-6">
         <h1 className="text-4xl font-bold text-left mb-8">Make a Deposit</h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mx-16 mb-8">
+        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -96,24 +96,10 @@ const Deposit = () => {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="account"
-            >
-              Account
-            </label>
-            <input
-              id="account"
-              type="text"
-              value={account}
-              onChange={(e) => setAccount(e.target.value)}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div>
+          
           <button
             onClick={handleDeposit}
             className="bg-blue-500 text-white px-4 py-2 rounded"

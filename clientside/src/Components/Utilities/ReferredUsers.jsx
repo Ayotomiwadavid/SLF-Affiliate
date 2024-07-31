@@ -48,7 +48,7 @@ const ReferredUsersTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredUsers.length >= 0 ? (
+          {filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
               <tr key={user.id} className="bg-white border-b hover:bg-purple-100">
                 <th

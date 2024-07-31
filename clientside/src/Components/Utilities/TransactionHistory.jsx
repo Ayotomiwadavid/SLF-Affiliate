@@ -242,7 +242,7 @@ const TransactionHistory = () => {
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              {filteredTransactions.length >= 0 ? (
+              {filteredTransactions.length > 0 ? (
                 <>
                   <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
@@ -282,8 +282,7 @@ const TransactionHistory = () => {
                 </>
               ) : (
                 <div className="w-full p-1 my-12 flex-col justify-center items-center gap-6 inline-flex">
-                  <img className="" src="/social-03.svg" />
-                  <div className="text-zinc-400 text-xs font-normal">
+                  <div className="text-zinc-400 text-lg font-normal">
                     Transactions not found
                   </div>
                 </div>

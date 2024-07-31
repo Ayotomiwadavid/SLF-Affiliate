@@ -57,7 +57,7 @@ const DashboardReportCard = ({ report, index }) => {
             isFirstCard ? "text-white" : "text-black"
           }`}
         >
-          <span>{addDollarSign ? "$" : ""}</span>
+          <span>{addDollarSign ? <>&#8358;</> : ""}</span>
           {getValue(report.title)}
         </p>
       </div>

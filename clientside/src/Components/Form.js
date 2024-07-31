@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const Form = ({ type }) => {
   const apiUrl = "https://softlife-baxk.onrender.com";
   const {
+    packageList,
     fetchBalance,
     fetchTransaction,
     fetchReferral,
@@ -25,37 +26,6 @@ const Form = ({ type }) => {
   const [errorUsername, setErrorUsername] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const packageList = [
-    {
-      id: 1,
-      description: "Level 1",
-      level: "LEVEL1",
-      name: "Level 1",
-      price: "1000.00",
-    },
-    {
-      id: 2,
-      description: "Level 2",
-      level: "LEVEL2",
-      name: "Level 2",
-      price: "2000.00",
-    },
-    {
-      id: 3,
-      description: "Level 3",
-      level: "LEVEL3",
-      name: "Level 3",
-      price: "3000.00",
-    },
-    {
-      id: 4,
-      description: "Premium",
-      level: "PREMIUM",
-      name: "Premium",
-      price: "5000.00",
-    },
-  ];
 
   const handlePackageChange = (event) => {
     setSelectedPackage(event.target.value);

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import DashboardLayout from "../../Components/Layout/DashboardLayout";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
 
 const Deposit = () => {
   const apiUrl = "https://softlife-baxk.onrender.com";
+  const { packageList } = useAuth();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const packagePrice = queryParams.get("packagePrice");
@@ -32,7 +34,7 @@ const Deposit = () => {
     }
 
     try {
-      const response = await fetch(`${apiUrl}/accounts/deposit/`, {
+      const response = await fetch(`${apiUrl}/finances/deposit/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,12 +48,13 @@ const Deposit = () => {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Deposit successful!");
+        toast.success("Deposit initiated");
         const newDeposit = {
           amount,
           account: "Savings", // Or the correct account type
           date: new Date().toISOString().split("T")[0],
         };
+        window.location.href = data.payment_url
         setRecentDeposits([newDeposit, ...recentDeposits]);
         setAmount("");
         setAccount("");
@@ -80,13 +83,27 @@ const Deposit = () => {
             >
               Amount
             </label>
-            <input
+            {/* <input
               id="amount"
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
               className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
+            /> */}
+            <select
+              className="h-[55px] px-3 w-[350px] outline-none border rounded-md bg-white"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            >
+              <option value="" disabled>
+                Choose Package
+              </option>
+              {packageList.map((pkg) => (
+                <option key={pkg.id} value={pkg.price}>
+                  {pkg.name} ({pkg.price})
+                </option>
+              ))}
+            </select>
           </div>
 
           <button

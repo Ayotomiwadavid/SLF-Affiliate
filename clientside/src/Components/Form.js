@@ -20,7 +20,7 @@ const Form = ({ type }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
-  const [referralID, setReferralID] = useState("");
+  const [referral_code, setReferralID] = useState("");
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorUsername, setErrorUsername] = useState("");
@@ -115,6 +115,7 @@ const Form = ({ type }) => {
           password,
           confirmPassword,
           package_id: selectedPackage,
+          referral_code
         }),
       });
 
@@ -230,7 +231,7 @@ const Form = ({ type }) => {
             type="text"
             placeholder="Referral Id"
             onChange={(e) => setReferralID(e.target.value)}
-            value={referralID}
+            value={referral_code}
           />
 
           <select

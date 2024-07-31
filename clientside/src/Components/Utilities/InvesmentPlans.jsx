@@ -12,12 +12,10 @@ const InvestmentPlans = () => {
     navigate(`/deposit?packagePrice=${selectedPackageId}`);
   };
 
-  const { isOpen, openModal, closeModal } = useConfirmPlanChange(
-    () => {
-      console.log("Confirmed!");
-      // Add your custom confirmation logic here
-    }
-  );
+  const { isOpen, openModal, closeModal } = useConfirmPlanChange(() => {
+    console.log("Confirmed!");
+    // Add your custom confirmation logic here
+  });
 
   const handleOpenModal = (packageId) => {
     setSelectedPackageId(packageId);
@@ -38,13 +36,22 @@ const InvestmentPlans = () => {
             <h2 className={`text-xl font-semibold mb-4`}>{plan.name}</h2>
             <h2 className={`text-4xl font-semibold mb-4`}>{plan.price}</h2>
             <p className={`text-gray-700 mb-4`}>{plan.description}</p>
-
-            <button
-              onClick={() => handleOpenModal(plan.price)}
-              className="bg-purple-900 text-white px-4 py-2 rounded"
-            >
-              Choose plan
-            </button>
+            {plan.id == userPackage.id ? (
+              <button
+                className={`bg-purple-900 disabled text-white px-4 py-2 rounded ${
+                  plan.id == userPackage.id && "opacity-50 cursor-not-allowed"
+                }`}
+              >
+                Current plan
+              </button>
+            ) : (
+              <button
+                onClick={() => handleOpenModal(plan.price)}
+                className={`bg-purple-900 text-white px-4 py-2 rounded`}
+              >
+                Choose plan
+              </button>
+            )}
           </div>
         ))}
       </div>

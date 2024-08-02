@@ -40,6 +40,9 @@ const ReferredUsersTable = () => {
               Name
             </th>
             <th scope="col" className="px-6 py-3">
+              Emaill
+            </th>
+            <th scope="col" className="px-6 py-3">
               Level
             </th>
             <th scope="col" className="px-6 py-3">
@@ -59,15 +62,15 @@ const ReferredUsersTable = () => {
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   <div className="ps-3">
-                    <img src={user.profile_img} />
                     <div className="text-base text-gray-900 font-semibold">
-                      {user.first_name} {user.last_name}
+                      {user.username} {user.last_name}
                     </div>
                     <div className="font-normal text-gray-500">
                       {user.level}
                     </div>
                   </div>
                 </th>
+                <td className="font-normal text-gray-500">{user.email}</td>
                 <td className="px-6 py-4">{user.position}</td>
               </tr>
             ))

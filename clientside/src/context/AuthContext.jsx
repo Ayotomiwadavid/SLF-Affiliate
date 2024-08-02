@@ -12,6 +12,7 @@ const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("");
   const [walletBalance, setBalance] = useState("");
   const [referral, setReferral] = useState("");
+  const [deposits, setDeposits] = useState("");
   const [referralUsers, setReferralUsers] = useState("");
   const [earnings, setEarnings] = useState("");
 
@@ -33,7 +34,9 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setBalance(data.data.total_earnings);
+          setBalance();
+          setEarnings(data.data.total_referral_earnings);
+          setDeposits(data.data.total_deposits);
           localStorage.setItem(
             "balance",
             JSON.stringify(data.data.total_earnings)
@@ -130,7 +133,6 @@ const AuthContextProvider = ({ children }) => {
         response.json().then((data) => {
           setReferral(data.referral_count);
           setReferralUsers(data.referred_users);
-          setEarnings(data.total_earnings);
           localStorage.setItem("referral", JSON.stringify(data.results));
           // console.log(data.referred_users[0]);
           setLoading(true);
@@ -168,6 +170,7 @@ const AuthContextProvider = ({ children }) => {
         referral,
         referralUsers,
         earnings,
+        deposits,
         transactions,
         packageList,
         userPackage,

@@ -1,8 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
-  const { walletBalance, deposits, payouts, earnings, referral } = useAuth();
+  const { deposits, payouts, earnings, referral } = useAuth();
+
+  // Correct wallet balance calculation
+  const walletBalance = (deposits * earnings);
 
   const getValue = (title) => {
     switch (title) {
@@ -21,13 +25,8 @@ const DashboardReportCard = ({ report, index }) => {
     }
   };
 
-  const addDollarSign = [
-    "Wallet Balance",
-    "Deposits",
-    "Payouts",
-    "Earnings",
-  ].includes(report.title);
-  const isFirstCard = index === 0; // Check if it's the first card
+  const addDollarSign = ["Wallet Balance", "Deposits", "Payouts", "Earnings"].includes(report.title);
+  const isFirstCard = index === 0;
 
   return (
     <div
@@ -57,12 +56,21 @@ const DashboardReportCard = ({ report, index }) => {
             isFirstCard ? "text-white" : "text-black"
           }`}
         >
-          <span>{addDollarSign ? <>&#8358;</> : ""}</span>
+          {addDollarSign && <>&#8358;</>}
           {getValue(report.title)}
         </p>
       </div>
     </div>
   );
+};
+
+// Prop validation
+DashboardReportCard.propTypes = {
+  report: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.node.isRequired,
+  }).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default DashboardReportCard;

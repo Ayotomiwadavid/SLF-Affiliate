@@ -50,29 +50,25 @@ const ReferredUsersTable = () => {
         <tbody>
           {filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
-              <tr key={user.id} className="bg-white border-b hover:bg-purple-100">
+              <tr
+                key={user.id}
+                className="bg-white w-full border-b hover:bg-purple-100"
+              >
                 <th
                   scope="row"
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   <div className="ps-3">
+                    <img src={user.profile_img} />
                     <div className="text-base text-gray-900 font-semibold">
-                      {user.name}
+                      {user.first_name} {user.last_name}
                     </div>
                     <div className="font-normal text-gray-500">
-                      {user.username}
+                      {user.email}
                     </div>
                   </div>
                 </th>
                 <td className="px-6 py-4">{user.position}</td>
-                <td className="px-6 py-4">
-                  <a
-                    href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit user
-                  </a>
-                </td>
               </tr>
             ))
           ) : (

@@ -273,7 +273,7 @@ const TransactionHistory = () => {
                           {item.user}
                         </th>
                         <td className="px-4 py-3">{item.transaction_type}</td>
-                        <td className="px-4 py-3">${item.amount}</td>
+                        <td className="px-4 py-3"><span>&#8358;</span>{item.amount}</td>
                         <td className={`px-4 py-3 text-${getStatusColor}`}>Completed</td>
                       </tr>
                     ))}

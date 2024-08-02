@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header className="w-full md:fixed flex items-center justify-between py-[15px] px-[05vw]  shadow-lg bg-white z-50 top-0 left-0">
       <div className="flex items-center justify-center">
-        <img src={Logo} alt="logo" className="h-6 w-6" />
+        <img src={Logo} alt="logo" className="h-[50px]" />
       </div>
       <nav className="hidden items-center justify-center md:flex">
         <ul className="flex items-center justify-center list-none">

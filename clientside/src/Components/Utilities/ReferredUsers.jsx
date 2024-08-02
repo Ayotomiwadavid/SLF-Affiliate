@@ -63,10 +63,7 @@ const ReferredUsersTable = () => {
                 >
                   <div className="ps-3">
                     <div className="text-base text-gray-900 font-semibold">
-                      {user.username} {user.last_name}
-                    </div>
-                    <div className="font-normal text-gray-500">
-                      {user.email}
+                      {user.username}
                     </div>
                   </div>
                 </th>

@@ -112,10 +112,10 @@ const Form = ({ type }) => {
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
-          middle_name,
-          username,
+          middle_name: middle_name,
+          username: username,
           email,
-          password,
+          password: password,
           confirmPassword,
           package_id: selectedPackage,
           referral_code

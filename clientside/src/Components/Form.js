@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 const Form = ({ type }) => {
-  const apiUrl = "https://softlife-baxk.onrender.com";
+  const apiUrl = "https://softlife-investment-1.onrender.com";
   const {
     packageList,
     fetchBalance,
@@ -244,7 +244,7 @@ const Form = ({ type }) => {
               )}
             </small>
           </div>
-          
+
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="password"

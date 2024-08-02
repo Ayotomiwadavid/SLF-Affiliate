@@ -15,6 +15,8 @@ const referrals = [
 const Referrals = () => {
   const { referralUsers } = useAuth();
 
+  console.log(referralUsers)
+
   return (
     <>
       <DashboardLayout />

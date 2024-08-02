@@ -94,7 +94,6 @@ const Form = ({ type }) => {
       !password ||
       !firstName ||
       !lastName ||
-      !phone_number||
       !username ||
       !confirmPassword
     ) {
@@ -112,7 +111,6 @@ const Form = ({ type }) => {
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
-          middle_name,
           username,
           email,
           password: password,
@@ -219,13 +217,6 @@ const Form = ({ type }) => {
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-          />
-          <input
-            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-            type="number"
-            placeholder="Phone Number"
-            onChange={(e) => setPhone(e.target.value)}
-            value={phone_number}
           />
 
           <div>

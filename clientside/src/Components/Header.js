@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../Images/logo5.png";
+import Logo from "../Images/SoftlifeLogo.png";
 import { Link } from "react-router-dom";
 import Button from "./Re-useAble/Button";
 import munuToggler from "../Images/MenuToggler.png";

@@ -13,9 +13,9 @@ const referrals = [
 ];
 
 const Referrals = () => {
-  const { referralUsers } = useAuth();
+  const { referralUsers, referral_code } = useAuth();
 
-  console.log(referralUsers)
+  // console.log(referralUsers)
 
   return (
     <>

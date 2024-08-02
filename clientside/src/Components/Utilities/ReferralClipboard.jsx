@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const ReferralLinkClipboard = () => {
+  const { referral_code } = useAuth();
   const [tooltipMessage, setTooltipMessage] = useState("Copy link");
   const [iconState, setIconState] = useState("default-icon");
-
-  const referralLink = "https://bit.ly/3U2SXcF";
+  const currentURL = window.location.origin;
+  const referralLink = `${currentURL}/sign-up?referral_code=${referral_code}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referralLink).then(() => {
@@ -28,7 +30,6 @@ const ReferralLinkClipboard = () => {
         </label>
       </div>
       <div className="flex items-center gap-2">
-        {/* <button className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-blue-700 dark:bg-blue-600 border hover:bg-blue-800 dark:hover:bg-blue-700 rounded-s-lg border-blue-700 dark:border-blue-600 hover:border-blue-700 dark:hover:border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">Generate</button> */}
         <div className="relative w-full">
           <input
             id="url-shortener"

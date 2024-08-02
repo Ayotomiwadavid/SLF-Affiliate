@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
@@ -8,11 +8,16 @@ const Form = ({ type }) => {
   const {
     packageList,
     fetchBalance,
+    fetchWalletBalance,
     fetchTransaction,
     fetchReferral,
     fetchPackages,
     fetchUserpackage,
   } = useAuth();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const referralCode = queryParams.get("referral_code");
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +26,7 @@ const Form = ({ type }) => {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [phone_number, setPhone] = useState("");
-  const [referral_code, setReferralID] = useState("");
+  const [referral_code, setReferralID] = useState(referralCode || "");
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorUsername, setErrorUsername] = useState("");
@@ -68,6 +73,7 @@ const Form = ({ type }) => {
           navigate("/dashboard");
         }, 2000);
         fetchBalance();
+        fetchWalletBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
@@ -130,6 +136,7 @@ const Form = ({ type }) => {
           navigate(`/deposit?packagePrice=${packagePrice}`);
         }, 2000);
         fetchBalance();
+        fetchWalletBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();

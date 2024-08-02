@@ -14,6 +14,7 @@ const AuthContextProvider = ({ children }) => {
   const [referral, setReferral] = useState("");
   const [deposits, setDeposits] = useState("");
   const [referralUsers, setReferralUsers] = useState("");
+  const [referral_code, setReferralCode] = useState("");
   const [earnings, setEarnings] = useState("");
 
   const [transactions, setTransaction] = useState([]);
@@ -22,6 +23,27 @@ const AuthContextProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(false);
 
+
+  const fetchWalletBalance = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/wallet-balance/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setBalance(data.data.wallet_balance);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
   const fetchBalance = async () => {
     const response = await fetch(
       `${apiUrl}/finances/balance/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -34,13 +56,8 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setBalance(data.data.balance);
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
-          localStorage.setItem(
-            "balance",
-            JSON.stringify(data.data.total_earnings)
-          );
           // console.log(data.data.total_earnings);
           setLoading(true);
         });
@@ -133,6 +150,7 @@ const AuthContextProvider = ({ children }) => {
         response.json().then((data) => {
           setReferral(data.referral_count);
           setReferralUsers(data.referred_users);
+          setReferralCode(data.referral_code);
           localStorage.setItem("referral", JSON.stringify(data.results));
           // console.log(data.referred_users[0]);
           setLoading(true);
@@ -145,6 +163,7 @@ const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetchBalance();
+    fetchWalletBalance();
     fetchTransaction();
     fetchReferral();
     fetchPackages();
@@ -169,11 +188,13 @@ const AuthContextProvider = ({ children }) => {
         walletBalance,
         referral,
         referralUsers,
+        referral_code,
         earnings,
         deposits,
         transactions,
         packageList,
         userPackage,
+        fetchWalletBalance,
         fetchBalance,
         fetchTransaction,
         fetchReferral,

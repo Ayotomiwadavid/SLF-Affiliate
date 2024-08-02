@@ -61,7 +61,7 @@ const ReferredUsersTable = () => {
                   <div className="ps-3">
                     <img src={user.profile_img} />
                     <div className="text-base text-gray-900 font-semibold">
-                      {user.first_name} {user.last_name}
+                      {user.username} {user.last_name}
                     </div>
                     <div className="font-normal text-gray-500">
                       {user.email}

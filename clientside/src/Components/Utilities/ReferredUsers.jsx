@@ -66,7 +66,7 @@ const ReferredUsersTable = () => {
                       {user.username} {user.last_name}
                     </div>
                     <div className="font-normal text-gray-500">
-                      {user.level}
+                      {user.email}
                     </div>
                   </div>
                 </th>

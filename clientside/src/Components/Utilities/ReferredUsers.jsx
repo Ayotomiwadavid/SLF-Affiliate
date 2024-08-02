@@ -52,13 +52,14 @@ const ReferredUsersTable = () => {
             filteredUsers.map((user) => (
               <tr
                 key={user.id}
-                className="bg-white border-b hover:bg-purple-100"
+                className="bg-white w-full border-b hover:bg-purple-100"
               >
                 <th
                   scope="row"
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
                   <div className="ps-3">
+                    <img src={user.profile_img} />
                     <div className="text-base text-gray-900 font-semibold">
                       {user.first_name} {user.last_name}
                     </div>

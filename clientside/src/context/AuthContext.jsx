@@ -13,7 +13,7 @@ const AuthContextProvider = ({ children }) => {
   const [walletBalance, setBalance] = useState("");
   const [referral, setReferral] = useState("");
   const [deposits, setDeposits] = useState("");
-  const [referralUsers, setReferralUsers] = useState("");
+  const [referralUsers, setReferralUsers] = useState([]);
   const [referral_code, setReferralCode] = useState("");
   const [earnings, setEarnings] = useState("");
 

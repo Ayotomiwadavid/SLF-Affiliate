@@ -20,7 +20,7 @@ const Form = ({ type }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
-  const [phone, setPhone] = useState("");
+  const [phone_number, setPhone] = useState("");
   const [referral_code, setReferralID] = useState("");
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -94,6 +94,7 @@ const Form = ({ type }) => {
       !password ||
       !firstName ||
       !lastName ||
+      !phone_number||
       !username ||
       !confirmPassword
     ) {
@@ -111,7 +112,9 @@ const Form = ({ type }) => {
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
+          middle_name: lastName,
           username,
+          phone_number,
           email,
           password,
           confirmPassword,
@@ -223,7 +226,7 @@ const Form = ({ type }) => {
             type="number"
             placeholder="Phone Number"
             onChange={(e) => setPhone(e.target.value)}
-            value={phone}
+            value={phone_number}
           />
 
           <div>

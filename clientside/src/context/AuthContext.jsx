@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
-  const apiUrl = "https://softlife-investment-1.onrender.com";
+  const apiUrl = "https://softlife-baxk.onrender.com";
   // const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [user, setUser] = useState("");

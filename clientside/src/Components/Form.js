@@ -78,11 +78,9 @@ const Form = ({ type }) => {
         fetchReferral();
         fetchPackages();
         fetchUserpackage();
-      } else if (response) {
+      } else {
         toast.error(data.detail);
         console.log(data.detail);
-      } else {
-        toast.error("An error occurred. Please try again later.");
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);
@@ -141,11 +139,9 @@ const Form = ({ type }) => {
         fetchReferral();
         fetchPackages();
         fetchUserpackage();
-      } else if (response) {
+      } else {
         setErrorUsername(data.username);
         setErrorPassword(password[0]);
-      } else {
-        toast.error("An error occurred. Please try again later.");
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

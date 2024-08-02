@@ -45,6 +45,7 @@ const Withdrawal = () => {
         toast.success("Withdrawal initiated");
       } else {
         toast.error(data.amount[0]);
+        toast.error(data.detail);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

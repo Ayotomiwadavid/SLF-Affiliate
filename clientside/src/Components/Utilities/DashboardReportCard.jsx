@@ -3,10 +3,12 @@ import PropTypes from "prop-types";
 import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
-  const { deposits, payouts, earnings, referral } = useAuth();
+  const { walletBalance, deposits, payouts, earnings, referral } = useAuth();
 
-  // Correct wallet balance calculation
-  const walletBalance = (deposits * earnings);
+  // // Ensure the inputs are numbers
+  // let depositsNumber = Number(deposits);
+  // let earningsNumber = Number(earnings);
+  // let walletBalance = depositsNumber + earningsNumber;
 
   const getValue = (title) => {
     switch (title) {
@@ -25,7 +27,12 @@ const DashboardReportCard = ({ report, index }) => {
     }
   };
 
-  const addDollarSign = ["Wallet Balance", "Deposits", "Payouts", "Earnings"].includes(report.title);
+  const addDollarSign = [
+    "Wallet Balance",
+    "Deposits",
+    "Payouts",
+    "Earnings",
+  ].includes(report.title);
   const isFirstCard = index === 0;
 
   return (

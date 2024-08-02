@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 const Form = ({ type }) => {
-  const apiUrl = "https://softlife-investment-1.onrender.com";
+  const apiUrl = "https://softlife-baxk.onrender.com";
   const {
     packageList,
     fetchBalance,
@@ -19,8 +19,8 @@ const Form = ({ type }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [middle_name, setMiddleName] = useState("");
   const [username, setUsername] = useState("");
+  const [phone_number, setPhone] = useState("");
   const [referral_code, setReferralID] = useState("");
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
@@ -94,7 +94,7 @@ const Form = ({ type }) => {
       !password ||
       !firstName ||
       !lastName ||
-      !middle_name ||
+      !phone_number||
       !username ||
       !confirmPassword
     ) {
@@ -112,8 +112,8 @@ const Form = ({ type }) => {
         body: JSON.stringify({
           first_name: firstName,
           last_name: lastName,
-          middle_name: middle_name,
-          username: username,
+          middle_name,
+          username,
           email,
           password: password,
           confirmPassword,
@@ -216,16 +216,16 @@ const Form = ({ type }) => {
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
-            placeholder="Middle Name"
-            onChange={(e) => setMiddleName(e.target.value)}
-            value={middle_name}
-          />
-          <input
-            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-            type="text"
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
+          />
+          <input
+            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+            type="number"
+            placeholder="Phone Number"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone_number}
           />
 
           <div>

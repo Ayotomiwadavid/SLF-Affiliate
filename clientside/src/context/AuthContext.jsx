@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
-  const apiUrl = "https://softlife-investment-1.onrender.com";
+  const apiUrl = "https://softlife-baxk.onrender.com";
   // const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [user, setUser] = useState("");
@@ -34,7 +34,7 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setBalance();
+          setBalance(data.data.balance);
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
           localStorage.setItem(

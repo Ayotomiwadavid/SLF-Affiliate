@@ -6,10 +6,10 @@ import { useAuth } from "../../context/AuthContext";
 const InvestmentPlans = () => {
   const navigate = useNavigate();
   const { userPackage, packageList } = useAuth();
-  const [selectedPackageId, setSelectedPackageId] = useState(null);
+  const [selectedPackagePrice, setSelectedPackagePrice] = useState(null);
 
   const handleConfirm = () => {
-    navigate(`/deposit?packagePrice=${selectedPackageId}`);
+    navigate(`/deposit?packagePrice=${selectedPackagePrice}`);
   };
 
   const { isOpen, openModal, closeModal } = useConfirmPlanChange(() => {
@@ -17,8 +17,8 @@ const InvestmentPlans = () => {
     // Add your custom confirmation logic here
   });
 
-  const handleOpenModal = (packageId) => {
-    setSelectedPackageId(packageId);
+  const handleOpenModal = (packagePrice) => {
+    setSelectedPackagePrice(packagePrice);
     openModal();
   };
 
@@ -36,7 +36,7 @@ const InvestmentPlans = () => {
             <h2 className={`text-xl font-semibold mb-4`}>{plan.name}</h2>
             <h2 className={`text-4xl font-semibold mb-4`}>{plan.price}</h2>
             <p className={`text-gray-700 mb-4`}>{plan.description}</p>
-            {plan.id == userPackage.id ? (
+            {plan.id === userPackage.id ? (
               <button
                 className={`bg-purple-900 disabled text-white px-4 py-2 rounded ${
                   plan.id == userPackage.id && "opacity-50 cursor-not-allowed"

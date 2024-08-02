@@ -34,7 +34,7 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setBalance();
+          setBalance(data.data.balance);
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
           localStorage.setItem(

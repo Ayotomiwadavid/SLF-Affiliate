@@ -49,7 +49,7 @@ const InvestmentPlans = () => {
                 onClick={() => handleOpenModal(plan.price)}
                 className={`bg-purple-900 text-white px-4 py-2 rounded`}
               >
-                Choose plan
+                Purchase plan
               </button>
             )}
           </div>

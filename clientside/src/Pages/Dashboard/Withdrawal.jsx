@@ -7,10 +7,6 @@ import { useAuth } from "../../context/AuthContext";
 const Withdrawal = () => {
   const apiUrl = "https://softlife-baxk.onrender.com";
   const { packageList } = useAuth();
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const packagePrice = queryParams.get("packagePrice");
-
   const navigate = useNavigate();
   const [amount, setAmount] = useState("");
   const [account_name, setAccountName] = useState("");
@@ -18,10 +14,6 @@ const Withdrawal = () => {
   const [bank_name, setBankName] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [recentDeposits, setRecentDeposits] = useState([
-    { amount: "100", account: "Savings", date: "2024-07-19" },
-    { amount: "200", account: "Checking", date: "2024-07-18" },
-  ]);
 
   const handleWithdrawal = async (e) => {
     e.preventDefault();
@@ -49,22 +41,10 @@ const Withdrawal = () => {
       });
 
       const data = await response.json();
-
       if (response.ok) {
         toast.success("Withdrawal initiated");
-        const newDeposit = {
-          amount,
-          account: "Savings", // Or the correct account type
-          date: new Date().toISOString().split("T")[0],
-        };
-        window.location.href = data.payment_url;
-        setRecentDeposits([newDeposit, ...recentDeposits]);
-        setAmount("");
-        setAccountName("");
-        setAccountNum("");
-        setBankName("");
       } else {
-        toast.error(data.detail || "An error occurred. Please try again later.");
+        toast.error(data.amount[0]);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

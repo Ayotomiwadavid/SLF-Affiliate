@@ -19,6 +19,7 @@ const Form = ({ type }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [middle_name, setMiddleName] = useState("");
   const [username, setUsername] = useState("");
   const [referral_code, setReferralID] = useState("");
   const [selectedPackage, setSelectedPackage] = useState("");
@@ -93,6 +94,7 @@ const Form = ({ type }) => {
       !password ||
       !firstName ||
       !lastName ||
+      !middle_name ||
       !username ||
       !confirmPassword
     ) {
@@ -108,8 +110,9 @@ const Form = ({ type }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          first_name: firstName,
+          last_name: lastName,
+          middle_name,
           username,
           email,
           password,
@@ -163,33 +166,29 @@ const Form = ({ type }) => {
         value={email}
       />
 
-      <div>
-        <input
-          className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <small>
-          {errorPassword && (
-            <p className="text-[red] mb-3 mt-1">
-              Ensure this field has at least 8 characters.
-            </p>
-          )}
-        </small>
-      </div>
 
-      {type === "signup" && (
-        <>
+
+      {type === "login" && (
+        <div>
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="password"
-            placeholder="Confirm Password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
           />
+          <small>
+            {errorPassword && (
+              <p className="text-[red] mb-3 mt-1">
+                Ensure this field has at least 8 characters.
+              </p>
+            )}
+          </small>
+        </div>
+      )}
 
+      {type === "signup" && (
+        <>
           <div>
             <input
               className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
@@ -217,15 +216,43 @@ const Form = ({ type }) => {
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"
+            placeholder="Middle Name"
+            onChange={(e) => setMiddleName(e.target.value)}
+            value={middle_name}
+          />
+          <input
+            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+            type="text"
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
           />
-        </>
-      )}
 
-      {type === "signup" && (
-        <>
+          <div>
+            <input
+              className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+            <small>
+              {errorPassword && (
+                <p className="text-[red] mb-3 mt-1">
+                  Ensure this field has at least 8 characters.
+                </p>
+              )}
+            </small>
+          </div>
+          
+          <input
+            className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
+            type="password"
+            placeholder="Confirm Password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+          />
+
           <input
             className="h-[55px] p-3 w-[350px] outline-none rounded-md placeholder:text-[#9999A6]"
             type="text"

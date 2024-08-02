@@ -34,6 +34,12 @@ const Form = ({ type }) => {
   const [errorPassword, setErrorPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //   Let { referral_code } = useParams();
+
+  // Let referralCode = Number(referral_code);
+
+  //   SetreferralCode(referralCode);
+
   const handlePackageChange = (event) => {
     setSelectedPackage(event.target.value);
   };
@@ -141,8 +147,12 @@ const Form = ({ type }) => {
         fetchPackages();
         fetchUserpackage();
       } else {
+        if (data.error_msg) {
+          toast.error(data.error_msg);
+        } else {
+          toast.error("Registration failed. Please try again.");
+        }
         setErrorUsername(data.username);
-        setErrorPassword(password[0]);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

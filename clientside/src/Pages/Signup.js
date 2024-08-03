@@ -11,7 +11,7 @@ const Signup = () => {
           <h1 className="text-center font-bold text-4xl capitalize text-[#F46B45] mb-2">
             Register Now!
           </h1>
-          <p>Join The Pool Of Our Successfull Customers</p>
+          <p>Begin your journey to prosperity</p>
         </div>
         <Form type="signup" />
       </main>

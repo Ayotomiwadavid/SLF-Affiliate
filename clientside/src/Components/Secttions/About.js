@@ -13,7 +13,7 @@ const About = () => {
             WHO WE ARE
           </h5>
           <h1 className="font-bold text-3xl capitalize ">
-            Welcome To SaveHyip
+            Welcome To Soft life project
           </h1>
           <span className="p-[2px] bg-[#F46B45] w-[20%]"></span>
         </div>

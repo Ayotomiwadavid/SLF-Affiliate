@@ -3,6 +3,9 @@ import Logo from "../Images/SoftlifeLogoWhite.png";
 import User from "../Images/user.png";
 import Saving from "../Images/saving.png";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import emailEvenlope from '../Images/envelope-back.png'
+import LocationEarth from '../Images/blackglobe.png'
+import LocationPin from '../Images/pin.png'
 
 const Footer = () => {
   return (
@@ -73,23 +76,15 @@ const Footer = () => {
           <ul className="w-full flex flex-col items-start justify-center py-5 gap-3">
             <li>
               {" "}
-              <KeyboardArrowRightIcon /> About Us
+              <img src={emailEvenlope} alt="contact id images" className="h-6 w-6"/> savehyip@example.com
             </li>
             <li>
               {" "}
-              <KeyboardArrowRightIcon /> Contact Us
+              <img src={LocationEarth} alt="contact id images" className="h-6 w-6"/> Contact Us
             </li>
             <li>
               {" "}
-              <KeyboardArrowRightIcon /> Sign Up
-            </li>
-            <li>
-              {" "}
-              <KeyboardArrowRightIcon /> Sign In
-            </li>
-            <li>
-              {" "}
-              <KeyboardArrowRightIcon /> Services
+              <img src={LocationPin} alt="contact id images" className="h-6 w-6"/> Sign Up
             </li>
           </ul>
         </div>

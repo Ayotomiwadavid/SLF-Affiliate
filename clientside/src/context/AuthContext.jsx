@@ -25,6 +25,32 @@ const AuthContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
 
   // =====================================================
+  // ==================[ UserDetails ]====================
+  // =====================================================
+
+  const fetchUserDetails = async () => {
+    const response = await fetch(
+      `${apiUrl}/accounts/users/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setUser(data);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+
+  // =====================================================
   // =================[ wallet-balance ]==================
   // =====================================================
 
@@ -214,6 +240,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    fetchUserDetails();
     fetchBalance();
     fetchWalletBalance();
     fetchWithdrawalsBalance();
@@ -248,6 +275,8 @@ const AuthContextProvider = ({ children }) => {
         transactions,
         packageList,
         userPackage,
+
+        fetchUserDetails,
         fetchWalletBalance,
         fetchBalance,
         fetchWithdrawalsBalance,

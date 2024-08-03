@@ -20,8 +20,6 @@ const Deposit = () => {
 
   const [loading, setLoading] = useState(false);
   const [recentDeposits, setRecentDeposits] = useState([
-    { amount: "100", account: "Savings", date: "2024-07-19" },
-    { amount: "200", account: "Checking", date: "2024-07-18" },
   ]);
 
   const handleDeposit = async (e) => {
@@ -75,7 +73,7 @@ const Deposit = () => {
       <div className="container sm:ml-64 mt-16 mx-auto p-6">
         <h1 className="text-4xl font-bold text-left mb-8">Make a Deposit</h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+        <div className="bg-white m-3 h-[20em] p-6 rounded-lg shadow-md mb-8">
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -91,7 +89,7 @@ const Deposit = () => {
               className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             /> */}
             <select
-              className="h-[55px] px-3 w-[350px] outline-none border rounded-md bg-white"
+              className="h-[55px] px-3 w-full outline-none border rounded-md bg-white"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             >
@@ -122,7 +120,7 @@ const Deposit = () => {
           </button>
         </div>
 
-        <h2 className="text-2xl font-bold text-center mb-4">Recent Deposits</h2>
+        {/* <h2 className="text-2xl font-bold text-center mb-4">Recent Deposits</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {recentDeposits.map((deposit, index) => (
             <div className="bg-white p-6 rounded-lg shadow-md" key={index}>
@@ -131,7 +129,7 @@ const Deposit = () => {
               <p className="text-gray-500">Date: {deposit.date}</p>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

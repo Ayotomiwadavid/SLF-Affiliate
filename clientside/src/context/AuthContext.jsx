@@ -126,7 +126,6 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setUserPackage(data[0]);
-          localStorage.setItem("userPackage", JSON.stringify(data));
           // console.log(data);
           setLoading(true);
         });

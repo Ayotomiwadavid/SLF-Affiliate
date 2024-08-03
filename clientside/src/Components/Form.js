@@ -148,11 +148,11 @@ const Form = ({ type }) => {
         fetchUserpackage();
       } else {
         if (data.error_msg) {
-          toast.error(data.error_msg);
+          toast.error("Invalid referral code");
         } else {
-          toast.error("Registration failed. Please try again.");
-        }
         setErrorUsername(data.username);
+        setErrorPassword(password[0]);
+        }
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

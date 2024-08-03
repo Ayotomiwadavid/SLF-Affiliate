@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
   const {
+    loadingAcc,
     walletBalance,
     total_withdrawals,
     deposits,
@@ -66,12 +67,18 @@ const DashboardReportCard = ({ report, index }) => {
           </h5>
         </a>
         <p
-          className={`font-bold text-3xl ${
+          className={`flex gap-3 font-bold text-3xl ${
             isFirstCard ? "text-white" : "text-black"
           }`}
         >
           {addDollarSign && <>&#8358;</>}
-          {getValue(report.title)}
+          {loadingAcc ? (
+            getValue(report.title)
+          ) : (
+            <div className="flex justify-center items-center">
+              <div className="animate-spin rounded-full h-4 w-4 border-b-4 border"></div>
+            </div>
+          )}
         </p>
       </div>
     </div>

@@ -28,7 +28,7 @@ const InvestmentPlans = () => {
       <h1 className="text-2xl font-semibold text-left mb-8">
         Our Investment Plans
       </h1>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2">
         {packageList.map((plan, index) => (
           <div
             className={`plan bg-white border p-6 rounded-lg shadow-md `}

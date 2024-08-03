@@ -23,6 +23,7 @@ const AuthContextProvider = ({ children }) => {
   const [userPackage, setUserPackage] = useState([]);
 
   const [loading, setLoading] = useState(false);
+  const [loadingAcc, setLoadingAcc] = useState(false);
 
   // =====================================================
   // ==================[ UserDetails ]====================
@@ -49,7 +50,6 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-
   // =====================================================
   // =================[ wallet-balance ]==================
   // =====================================================
@@ -67,14 +67,13 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setBalance(data.data.wallet_balance);
-          setLoading(true);
+          setLoadingAcc(true);
         });
       } else if (response) {
         response.json().then((data) => {});
       }
     });
   };
-
 
   // =====================================================
   // =====================[ balance ]=====================
@@ -95,14 +94,13 @@ const AuthContextProvider = ({ children }) => {
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
           // console.log(data.data.total_earnings);
-          setLoading(true);
+          setLoadingAcc(true);
         });
       } else if (response) {
         response.json().then((data) => {});
       }
     });
   };
-
 
   // =====================================================
   // ================[ total-withdrawals ]================
@@ -128,7 +126,6 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
-
 
   // =====================================================
   // ===============[ transaction-history ]===============
@@ -157,7 +154,6 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-
   // =====================================================
   // ===================[ all_packages ]==================
   // =====================================================
@@ -181,7 +177,6 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
-
 
   // =====================================================
   // ===================[ userpackage ]===================
@@ -209,7 +204,6 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-  
   // =====================================================
   // =====================[ referral ]=====================
   // =====================================================
@@ -275,6 +269,7 @@ const AuthContextProvider = ({ children }) => {
         transactions,
         packageList,
         userPackage,
+        loadingAcc,
 
         fetchUserDetails,
         fetchWalletBalance,

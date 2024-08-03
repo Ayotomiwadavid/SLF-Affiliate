@@ -61,7 +61,7 @@ const Withdrawal = () => {
       <div className="container sm:ml-64 mt-16 mx-auto p-6">
         <h1 className="text-4xl font-bold text-left mb-8">Request for a withdrawal</h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-md mb-8">
+        <div className="bg-white py-6 px-3 md:px-12 rounded-lg shadow-md mb-8">
           <form onSubmit={handleWithdrawal}>
             <div className="mb-4">
               <label
@@ -75,7 +75,7 @@ const Withdrawal = () => {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow w-full appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 
@@ -91,7 +91,7 @@ const Withdrawal = () => {
                 type="text"
                 value={account_name}
                 onChange={(e) => setAccountName(e.target.value)}
-                className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow w-full appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 
@@ -107,7 +107,7 @@ const Withdrawal = () => {
                 type="number"
                 value={account_number}
                 onChange={(e) => setAccountNum(e.target.value)}
-                className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow w-full appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 
@@ -123,7 +123,7 @@ const Withdrawal = () => {
                 type="text"
                 value={bank_name}
                 onChange={(e) => setBankName(e.target.value)}
-                className="shadow appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow w-full appearance-none border rounded w-[90%] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
 

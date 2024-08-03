@@ -50,6 +50,11 @@ const Form = ({ type }) => {
     return selectedPkg ? selectedPkg.price : "";
   };
 
+
+  // =====================================================
+  // =====================[ SIGN IN ]=====================
+  // =====================================================
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -98,6 +103,11 @@ const Form = ({ type }) => {
       setLoading(false);
     }
   };
+
+
+  // =====================================================
+  // =====================[ SIGN UP ]=====================
+  // =====================================================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -153,8 +163,8 @@ const Form = ({ type }) => {
         if (data.error_msg) {
           toast.error("Invalid referral code");
         } else {
-        setErrorUsername(data.username);
-        setErrorPassword(password[0]);
+          setErrorUsername(data.username);
+          setErrorPassword(password[0]);
         }
       }
     } catch (error) {

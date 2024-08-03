@@ -24,6 +24,9 @@ const AuthContextProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(false);
 
+  // =====================================================
+  // =================[ wallet-balance ]==================
+  // =====================================================
 
   const fetchWalletBalance = async () => {
     const response = await fetch(
@@ -45,6 +48,12 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+
+  // =====================================================
+  // =====================[ balance ]=====================
+  // =====================================================
+
   const fetchBalance = async () => {
     const response = await fetch(
       `${apiUrl}/finances/balance/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -68,6 +77,11 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
+
+  // =====================================================
+  // ================[ total-withdrawals ]================
+  // =====================================================
+
   const fetchWithdrawalsBalance = async () => {
     const response = await fetch(
       `${apiUrl}/finances/total-withdrawals/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -88,6 +102,11 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+
+  // =====================================================
+  // ===============[ transaction-history ]===============
+  // =====================================================
 
   const fetchTransaction = async () => {
     const response = await fetch(
@@ -112,17 +131,19 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
+
+  // =====================================================
+  // ===================[ all_packages ]==================
+  // =====================================================
+
   const fetchPackages = () => {
-    // const response = await 
-    fetch(
-      `${apiUrl}/finances/all_packages/`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    ).then((response) => {
+    // const response = await
+    fetch(`${apiUrl}/finances/all_packages/`, {
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setPackageList(data);
@@ -134,6 +155,11 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+
+  // =====================================================
+  // ===================[ userpackage ]===================
+  // =====================================================
 
   const fetchUserpackage = async () => {
     const response = await fetch(
@@ -156,6 +182,11 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+  
+  // =====================================================
+  // =====================[ referral ]=====================
+  // =====================================================
 
   const fetchReferral = async () => {
     const response = await fetch(

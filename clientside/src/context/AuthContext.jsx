@@ -11,6 +11,7 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [walletBalance, setBalance] = useState("");
+  const [total_withdrawals, WithdrawalsBalance] = useState("");
   const [referral, setReferral] = useState("");
   const [deposits, setDeposits] = useState("");
   const [referralUsers, setReferralUsers] = useState([]);
@@ -59,6 +60,27 @@ const AuthContextProvider = ({ children }) => {
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
           // console.log(data.data.total_earnings);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+  const fetchWithdrawalsBalance = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/total-withdrawals/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          WithdrawalsBalance(data.total_withdrawals);
           setLoading(true);
         });
       } else if (response) {
@@ -163,6 +185,7 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     fetchBalance();
     fetchWalletBalance();
+    fetchWithdrawalsBalance();
     fetchTransaction();
     fetchReferral();
     fetchPackages();
@@ -185,6 +208,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         user,
         walletBalance,
+        total_withdrawals,
         referral,
         referralUsers,
         referral_code,
@@ -195,6 +219,7 @@ const AuthContextProvider = ({ children }) => {
         userPackage,
         fetchWalletBalance,
         fetchBalance,
+        fetchWithdrawalsBalance,
         fetchTransaction,
         fetchReferral,
         fetchPackages,

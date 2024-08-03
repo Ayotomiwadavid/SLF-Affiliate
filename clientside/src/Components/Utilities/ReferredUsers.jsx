@@ -37,6 +37,9 @@ const ReferredUsersTable = () => {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" className="px-6 py-3">
+              S/N
+            </th>
+            <th scope="col" className="px-6 py-3">
               Name
             </th>
             <th scope="col" className="px-6 py-3">
@@ -45,30 +48,25 @@ const ReferredUsersTable = () => {
             <th scope="col" className="px-6 py-3">
               Level
             </th>
-            <th scope="col" className="px-6 py-3">
-              Action
-            </th>
           </tr>
         </thead>
         <tbody>
           {filteredUsers.length > 0 ? (
-            filteredUsers.map((user) => (
+            filteredUsers.map((user, index) => (
               <tr
                 key={user.id}
                 className="bg-white w-full border-b hover:bg-purple-100"
               >
-                <th
-                  scope="row"
+                <td className="px-6 py-4">{index + 1}</td>
+                <td
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  <div className="ps-3">
-                    <div className="text-base text-gray-900 font-semibold">
-                      {user.username}
-                    </div>
+                  <div className="text-base text-gray-900 font-semibold">
+                    {user.username}
                   </div>
-                </th>
+                </td>
                 <td className="font-normal text-gray-500">{user.email}</td>
-                <td className="px-6 py-4">{user.position}</td>
+                <td className="px-6 py-4">{user.level}</td>
               </tr>
             ))
           ) : (

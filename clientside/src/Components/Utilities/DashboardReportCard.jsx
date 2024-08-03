@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
-  const { walletBalance, deposits, payouts, earnings, referral } = useAuth();
+  const {
+    walletBalance,
+    total_withdrawals,
+    deposits,
+    payouts,
+    earnings,
+    referral,
+  } = useAuth();
 
   // // Ensure the inputs are numbers
   // let depositsNumber = Number(deposits);
@@ -17,7 +24,7 @@ const DashboardReportCard = ({ report, index }) => {
       case "Deposits":
         return deposits;
       case "Payouts":
-        return payouts;
+        return total_withdrawals;
       case "Earnings":
         return earnings;
       case "Referral":

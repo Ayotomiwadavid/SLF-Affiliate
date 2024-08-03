@@ -9,6 +9,7 @@ const Form = ({ type }) => {
     packageList,
     fetchBalance,
     fetchWalletBalance,
+    fetchWithdrawalsBalance,
     fetchTransaction,
     fetchReferral,
     fetchPackages,
@@ -81,6 +82,7 @@ const Form = ({ type }) => {
         }, 2000);
         fetchBalance();
         fetchWalletBalance();
+        fetchWithdrawalsBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
@@ -142,6 +144,7 @@ const Form = ({ type }) => {
         }, 2000);
         fetchBalance();
         fetchWalletBalance();
+        fetchWithdrawalsBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();

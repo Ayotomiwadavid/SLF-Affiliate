@@ -6,6 +6,7 @@ import Bar from '../../Images/bars.png'
 import BitCoin from '../../Images/bitcoin.png'
 import Support from '../../Images/support.png'
 import Globe from '../../Images/globe.png'
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -24,21 +25,20 @@ const Services = () => {
             <img src={certified} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-            We're Certified
+          WEALTH CREATION 
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          We hold your hand till you are able to boast of your own wealth through the SLP FORMULA
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
 
         <div className="w-[300px] h-[300px] rounded-md border-[2px] transition-all duration-500 group cursor-pointer hover:shadow-xl hover:border-[#F46B45] py-3 px-3 flex flex-col">
@@ -46,21 +46,20 @@ const Services = () => {
             <img src={shield} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-          We're Secure
+          LEADERSHIP
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          We imbibe excellent leadership trait in you and prepare you for Leadership role ahead. At SLP, we are born-leaders. 
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
 
         <div className="w-[300px] h-[300px] rounded-md border-[2px] transition-all duration-500 group cursor-pointer hover:shadow-xl hover:border-[#F46B45] py-3 px-3 flex flex-col">
@@ -68,21 +67,20 @@ const Services = () => {
             <img src={Bar} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-          We're Profitable
+          NETWORKING 
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          People is power, real people is money. Our system integrates you with the right persons required for your journey 
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
 
         <div className="w-[300px] h-[300px] rounded-md border-[2px] transition-all duration-500 group cursor-pointer hover:shadow-xl hover:border-[#F46B45] py-3 px-3 flex flex-col">
@@ -90,21 +88,20 @@ const Services = () => {
             <img src={BitCoin} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-          We Accept Crypto
+          GOVERNANCE
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          We equip you with the nitty-gritty of a good governance, as a SoftLiver, you will be naturally launched into a governance system 
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
 
         <div className="w-[300px] h-[300px] rounded-md border-[2px] transition-all duration-500 group cursor-pointer hover:shadow-xl hover:border-[#F46B45] py-3 px-3 flex flex-col">
@@ -112,21 +109,20 @@ const Services = () => {
             <img src={Support} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-          Best Support
+          TOUR AND TRAVELS 
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          Our members stands great chance to tour the world through our bi-annual excursion scheme
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
 
         <div className="w-[300px] h-[300px] rounded-md border-[2px] transition-all duration-500 group cursor-pointer hover:shadow-xl hover:border-[#F46B45] py-3 px-3 flex flex-col">
@@ -134,21 +130,20 @@ const Services = () => {
             <img src={Globe} alt="certification" className="h-10 w-10" />
           </div>
           <h1 className="text-2xl px-2 py-2 font-semibold group-hover:text-[#F46B45] transition-all duration-500">
-          We're Global
+          EDUCATION
           </h1>
 
           <p className="px-2 py-2 leading-7 text-wrap text-base text-[#797979]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad minim veniam
+          SLP is domicile in tertiary institution and organizes leadership Colloquium annually
           </p>
 
-          <div className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
+          <Link to='/sign-up' className="flex items-center justify-center h-[45px] w-[45px] border-[2px] rounded-full transition-all duration-500 group-hover:border-[#F46B45] border-[#F0A23C] m-2">
             <EastIcon
               style={{
                 fontSize: "20px",
               }}
             />
-          </div>
+          </Link>
         </div>
       </main>
     </section>

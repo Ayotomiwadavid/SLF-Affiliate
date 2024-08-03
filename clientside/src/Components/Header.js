@@ -14,40 +14,35 @@ const Header = () => {
   return (
     <header className="w-full md:fixed flex items-center justify-between py-[15px] px-[05vw]  shadow-lg bg-white z-50 top-0 left-0">
       <div className="flex items-center justify-center">
-        <img src={Logo} alt="logo" className="h-[50px]" />
+        <img src={Logo} alt="logo" className="h-[50px] w-[200px]" />
       </div>
       <nav className="hidden items-center justify-center md:flex">
         <ul className="flex items-center justify-center list-none">
-          <Link
-            to="/"
-            className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
+          <a
+            href="#heroSection"
+            className="font-serif  p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>home</li>
-          </Link>
-          <Link
-            to="/about-us"
+          </a>
+          <a
+            href="#aboutSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>About</li>
-          </Link>
-          <Link
-            to="/investment-plan"
+          </a>
+          <a
+            href="#planSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>Investment plan</li>
-          </Link>
-          <Link
-            to="/dashboard"
-            className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
-          >
-            <li>Dashboard</li>
-          </Link>
-          <Link
-            to="/support"
+          </a>
+          <a
+            href="https://wa.link/8foxzl"
+            target="_blank"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>support</li>
-          </Link>
+          </a>
         </ul>
       </nav>
 

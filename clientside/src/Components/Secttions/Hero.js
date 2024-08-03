@@ -6,21 +6,18 @@ import WhatSappLogo from "../../Images/whatsapp.png";
 
 const Hero = () => {
   return (
-    <section className="w-full flex items-center justify-between gap-2 h-lvh herosection">
+    <section id="heroSection" className="w-full flex items-center justify-between gap-2 h-lvh herosection">
       <article className="w-full h-full px-3 flex flex-col items-center justify-center gap-4 md:pl-[05vw] md:w-[40%]">
         <div className="flex w-full gap-2 items-center justify-start">
           <span className="p-[2PX] w-[50px] bg-[#F46B45] md:w-[20%]"></span>
-          <p className="capitalize text-2xl text-nowrap ">Often Have Small</p>
+          <p className="capitalize text-2xl text-nowrap ">Become a SoftLiver</p>
           <span className=" hidden p-[2PX] w-[20%] bg-[#F46B45] md:flex"></span>
         </div>
         <h1 className="font-serif text-3xl text-left w-[100%] py-2 font-bold md:text-5xl">
-          Invest Your Money For <span className="text-[#F46B45]">Future</span>
+        Prosper and secure your<span className="text-[#F46B45]"> Future</span> with SLP
         </h1>
         <p className="leading-6 text-[#979797] text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-          enim ad minim veniam Quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute an irure dolor in voluptate
-          velit.
+        Welcome to the Soft Life Project, where we empower Africans through networking and teamwork. Join us to enhance your life, achieve your goals, and secure a prosperous future. Together, we create opportunities and build a better tomorrow for everyone involved. Connect, collaborate, and thrive with the SLP community today.
         </p>
         <div className="flex w-full items-center justify-start py-4 gap-3">
           <Link to="/sign-up">
@@ -29,17 +26,17 @@ const Hero = () => {
               buttonContent="start now"
             />
           </Link>
-          <Link to="/investment-plan">
+          <a target="_blank" href="http://www.jettecktelecom.com.ng">
             <Button
               classStyle="runded-full bg-[#F46B45] text-white capitalize rounded-full w-[170px] h-[50px] font-semibold capitalize text-lg hover:border-2 hover:border-[#F46B45] hover:text-[#F46B45] transition duration-700 hover:bg-transparent md:w-[200px] md:h-[50px]"
-              buttonContent="view plus"
+              buttonContent="Get cheap data"
             />
-          </Link>
+          </a>
         </div>
 
         {/* SOCIAL ICONS ON HERO SECTION */}
         <div className="flex items-center gap-3 w-full justify-start ml-4 py-2">
-          <a href="https://www.google.com">
+          <a target="_blank" href="https://wa.link/8foxzl">
             <div className="border-[2px] border-[#F0A23C] w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer">
               <img
                 src={WhatSappLogo}
@@ -48,7 +45,7 @@ const Hero = () => {
               />
             </div>
           </a>
-          <a href="https://www.google.com">
+          <a href="" target="_blank">
             <div className="border-[2px] border-[#F0A23C] w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer">
               <img
                 src={TelegramLogo}

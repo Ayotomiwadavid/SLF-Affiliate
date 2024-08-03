@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <section className="w-full h-fit flex py-10 px-[15px]items-center justify-between gap-3 bg-white overflow-x-hidden md:py-10 md:px-0">
+    <section id="aboutSection" className="w-full h-fit flex py-10 px-[15px]items-center justify-between gap-3 bg-white overflow-x-hidden md:py-10 md:px-0">
       <article className="w-full h-full flex flex-col pl-[5vw] items-start justify-center md:w-1/2">
         <div className="w-full flex flex-col items-start justify-center gap-3">
           <h5 className="text-[#F46B45] font-semibold font-sans tracking-widest uppercase text-xl">
@@ -19,16 +19,8 @@ const About = () => {
         </div>
         <main className="flex flex-col items-center justify-start py-4 gap-3">
           <p className="text-[#797979] text-md text-wrap font-sans font-light">
-            Put your investing ideas into action with full range of investments.
-            Duis auteir ure dolor in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Enjoy real benefits and rewards on your
-            accrue investing.
-          </p>
-          <p className="text-[#797979] text-md text-wrap font-sans font-light">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do Ut
-            enim ad an minim veniam Quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis auteirure dolor in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          SLP is a global Leadership and Economic Support establishment that is focused on lifting her members to leave the struggle-kind life and live above average by creating a platform for them to earn endlessly. 
+          This platform is strongly recommended for workers close to their retirement, Religion Leaders, Youths and Students, Underpaid Graduates and everyone who desires financial breakthrough.
           </p>
         </main>
 
@@ -49,7 +41,7 @@ const About = () => {
                 <div className="w-[45px] h-[45px] transition-all duration-500 group-hover:bg-[#F46B45] rounded-full flex items-center justify-center bg-[#F0A23C]">
                     <img src={checkMark} className="h-[50%] w-[50%]"  alt="check mark"/>
                 </div>
-                <h3 className="font-normal text-2xl transition-all duration-500 group-hover:text-[#F46B45] capitalize">Licenced & Certified</h3>
+                <h3 className="font-normal text-2xl transition-all duration-500 group-hover:text-[#F46B45] capitalize">saving & investment</h3>
             </div>
 
             <div className="w-full flex items-center justify-start py-3">

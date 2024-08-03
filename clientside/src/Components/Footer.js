@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Images/logo_resp.png";
+import Logo from "../Images/SoftlifeLogoWhite.png";
 import User from "../Images/user.png";
 import Saving from "../Images/saving.png";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -7,14 +7,13 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const Footer = () => {
   return (
     <footer className="py-[50px] px-[10vw] flex flex-col items-center justify-center bg-[#F0A23C]">
-      <main className="h-[90%] w-full items-start justify-between flex gap-6">
+      <main className="h-[90%] w-full items-start justify-between flex flex-col gap-6 md:flex-row">
         <div className="flex flex-col items-start justify-center gap-5">
           <div className="flex items-center justify-center">
-            <img src={Logo} alt="logo" />
+            <img src={Logo} alt="logo" className="w-[250px] h-[70px]"/>
           </div>
           <p className="text-wrap w-[70%]">
-            We are a full service Digital Marketing Agency all the foundational
-            tool you need.
+          We are committed to brewing a better world we desire; where softliving becomes a lifestyle.
           </p>
           <div className="flex items-center justify-start gap-2">
             <img src={User} alt="user img" className="h-10 w-10" />

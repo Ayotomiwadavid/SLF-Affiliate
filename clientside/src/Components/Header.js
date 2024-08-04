@@ -60,10 +60,14 @@ const Header = () => {
           <div className="flex h-full items-center justify-center">
             <img src={Logo} alt="logo" className="h-8" />
           </div>
+
+          <div className="flex h-full items-center justify-center" onClick={handleSideBarVisibility}>
+          </div>
           <div
             className="flex h-full items-center justify-center"
             onClick={handleSideBarVisibility}
           >
+
             <img src={MenuCancel} alt="logo" className="h-8 w-8" />
           </div>
         </main>
@@ -88,15 +92,16 @@ const Header = () => {
           </Link>
           <a
             href="https://wa.link/8foxzl"
+            target="_blank"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>support</li>
           </a>
           <Link to="/sign-up" className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300">
-          Sign Up
+            Sign Up
           </Link>
           <Link to="/login" className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300">
-          Login
+            Login
           </Link>
         </ul>
       </nav>

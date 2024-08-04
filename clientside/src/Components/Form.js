@@ -15,11 +15,22 @@ const Form = ({ type }) => {
     fetchPackages,
     fetchUserpackage,
   } = useAuth();
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const referralCode = queryParams.get("referral_code");
+  let referral_Code;
 
-  let referral_Code = Number(referralCode);
+  if (referralCode !== null) {
+    referral_Code = parseInt(referralCode, 10);
+    if (isNaN(referral_Code) || referralCode.startsWith("0")) {
+      referral_Code = referralCode;
+    }
+  } else {
+    referral_Code = null;
+  }
+// console.log(referral_Code); 
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,12 +45,6 @@ const Form = ({ type }) => {
   const [errorUsername, setErrorUsername] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  //   Let { referral_code } = useParams();
-
-  // Let referralCode = Number(referral_code);
-
-  //   SetreferralCode(referralCode);
 
   const handlePackageChange = (event) => {
     setSelectedPackage(event.target.value);

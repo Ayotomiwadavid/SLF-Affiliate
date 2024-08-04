@@ -10,9 +10,8 @@ const TransactionHistory = () => {
   useEffect(() => {
     if (Array.isArray(transactions)) {
       setFilteredTransactions(
-        transactions.filter(
-          (transaction) =>
-            transaction.amount.toLowerCase().includes(searchTerm.toLowerCase())
+        transactions.filter((transaction) =>
+          transaction.amount.toLowerCase().includes(searchTerm.toLowerCase())
         )
       );
     }
@@ -24,7 +23,7 @@ const TransactionHistory = () => {
 
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
-      case "Completed":
+      case "SUCCESSFUL":
         return "green-600";
       case "pending":
         return "orange-600";
@@ -241,21 +240,21 @@ const TransactionHistory = () => {
             </div>
           </div>
           <div className="overflow-x-auto">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table className="w-full text-sm px-2 text-left">
               {filteredTransactions.length > 0 ? (
                 <>
-                  <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                  <thead className="text-xs uppercase bg-gray-50">
                     <tr>
-                      <th scope="col" className="px-4 py-3">
-                        Transaction Id
-                      </th>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-2 py-3">
                         Model
                       </th>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-2 py-3">
+                        Transaction Id
+                      </th>
+                      <th scope="col" className="px-2 py-3">
                         Amount
                       </th>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-2 py-3">
                         Status
                       </th>
                       <th scope="col" className="px-4 py-3">
@@ -264,19 +263,32 @@ const TransactionHistory = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredTransactions.map((item, index) => (
-                      <tr key={index}>
-                        <th
-                          scope="row"
-                          className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap"
-                        >
-                          {item.user}
-                        </th>
-                        <td className="px-4 py-3">{item.transaction_type}</td>
-                        <td className="px-4 py-3"><span>&#8358;</span>{item.amount}</td>
-                        <td className={`px-4 py-3 text-${getStatusColor}`}>Completed</td>
-                      </tr>
-                    ))}
+                    {filteredTransactions.map(
+                      ({ index, status, user, transaction_type, amount }) => {
+                        // const sign = isPositiveTransaction ? "+" : "-";
+                        const textColor =
+                          status === "SUCCESSFUL" ? "green" : "red";
+
+                        return (
+                          <tr key={index + 1}>
+                            <th
+                              scope="row"
+                              className="px-2 py-3 font-medium text-gray-900 whitespace-nowrap"
+                            >
+                              {transaction_type}
+                            </th>
+                            <td className="px-2 py-3">{user}</td>
+                            <td className="px-2 py-3">
+                              <span>&#8358;</span>
+                              {amount}
+                            </td>
+                            <td className={`px-2 py-3 text-[${textColor}]`}>
+                              Completed
+                            </td>
+                          </tr>
+                        );
+                      }
+                    )}
                   </tbody>
                 </>
               ) : (

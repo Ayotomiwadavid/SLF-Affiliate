@@ -7,6 +7,7 @@ const InvestmentPlans = () => {
   const navigate = useNavigate();
   const { userPackage, packageList } = useAuth();
   const [selectedPackagePrice, setSelectedPackagePrice] = useState(null);
+  // console.log(userPackage);
 
   const handleConfirm = () => {
     navigate(`/deposit?packagePrice=${selectedPackagePrice}`);
@@ -27,7 +28,7 @@ const InvestmentPlans = () => {
       <h1 className="text-2xl font-semibold text-left mb-8">
         Our Investment Plans
       </h1>
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-2">
         {packageList.map((plan, index) => (
           <div
             className={`plan bg-white border p-6 rounded-lg shadow-md `}
@@ -36,10 +37,10 @@ const InvestmentPlans = () => {
             <h2 className={`text-xl font-semibold mb-4`}>{plan.name}</h2>
             <h2 className={`text-4xl font-semibold mb-4`}>{plan.price}</h2>
             <p className={`text-gray-700 mb-4`}>{plan.description}</p>
-            {plan.id === userPackage.id ? (
+            {plan.name === userPackage.package_name ? (
               <button
                 className={`bg-purple-900 disabled text-white px-4 py-2 rounded ${
-                  plan.id == userPackage.id && "opacity-50 cursor-not-allowed"
+                  plan.name === userPackage.package_name && "opacity-50 cursor-not-allowed"
                 }`}
               >
                 Current plan

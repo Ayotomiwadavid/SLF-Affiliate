@@ -170,7 +170,7 @@ const MyAccount = () => {
                 </div>
               </div>
 
-              <div>
+              {/* <div>
                 <div className="flex mt-12">
                   <div></div>
                   <div className="date font-semibold text-xs sm:text-sm">
@@ -183,14 +183,8 @@ const MyAccount = () => {
                 <div className="chart col my-4 sm:my-0">
                   <DashboardChart />
                 </div>
-              </div>
+              </div> */}
             </div>
-
-            {/* <div className="col">
-                            <div className="bg-white rounded shadow p-4">
-                                <h1 className='text-2xl font-bold'>Active Plan</h1>
-                            </div>
-                        </div> */}
           </div>
         </div>
         <div className="bg-gray-50 p-4 rounded-lg my-4">

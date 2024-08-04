@@ -11,6 +11,7 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [walletBalance, setBalance] = useState("");
+  const [total_withdrawals, WithdrawalsBalance] = useState("");
   const [referral, setReferral] = useState("");
   const [deposits, setDeposits] = useState("");
   const [referralUsers, setReferralUsers] = useState([]);
@@ -22,7 +23,36 @@ const AuthContextProvider = ({ children }) => {
   const [userPackage, setUserPackage] = useState([]);
 
   const [loading, setLoading] = useState(false);
+  const [loadingAcc, setLoadingAcc] = useState(false);
 
+  // =====================================================
+  // ==================[ UserDetails ]====================
+  // =====================================================
+
+  const fetchUserDetails = async () => {
+    const response = await fetch(
+      `${apiUrl}/accounts/users/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setUser(data);
+          setLoading(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+  // =====================================================
+  // =================[ wallet-balance ]==================
+  // =====================================================
 
   const fetchWalletBalance = async () => {
     const response = await fetch(
@@ -37,13 +67,18 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setBalance(data.data.wallet_balance);
-          setLoading(true);
+          setLoadingAcc(true);
         });
       } else if (response) {
         response.json().then((data) => {});
       }
     });
   };
+
+  // =====================================================
+  // =====================[ balance ]=====================
+  // =====================================================
+
   const fetchBalance = async () => {
     const response = await fetch(
       `${apiUrl}/finances/balance/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
@@ -59,6 +94,31 @@ const AuthContextProvider = ({ children }) => {
           setEarnings(data.data.total_referral_earnings);
           setDeposits(data.data.total_deposits);
           // console.log(data.data.total_earnings);
+          setLoadingAcc(true);
+        });
+      } else if (response) {
+        response.json().then((data) => {});
+      }
+    });
+  };
+
+  // =====================================================
+  // ================[ total-withdrawals ]================
+  // =====================================================
+
+  const fetchWithdrawalsBalance = async () => {
+    const response = await fetch(
+      `${apiUrl}/finances/total-withdrawals/?_csrfToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    ).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          WithdrawalsBalance(data.total_withdrawals);
           setLoading(true);
         });
       } else if (response) {
@@ -66,6 +126,10 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+  // =====================================================
+  // ===============[ transaction-history ]===============
+  // =====================================================
 
   const fetchTransaction = async () => {
     const response = await fetch(
@@ -90,17 +154,18 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
+  // =====================================================
+  // ===================[ all_packages ]==================
+  // =====================================================
+
   const fetchPackages = () => {
-    // const response = await 
-    fetch(
-      `${apiUrl}/finances/all_packages/`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    ).then((response) => {
+    // const response = await
+    fetch(`${apiUrl}/finances/all_packages/`, {
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setPackageList(data);
@@ -112,6 +177,10 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+  // =====================================================
+  // ===================[ userpackage ]===================
+  // =====================================================
 
   const fetchUserpackage = async () => {
     const response = await fetch(
@@ -126,7 +195,6 @@ const AuthContextProvider = ({ children }) => {
       if (response.ok) {
         response.json().then((data) => {
           setUserPackage(data[0]);
-          localStorage.setItem("userPackage", JSON.stringify(data));
           // console.log(data);
           setLoading(true);
         });
@@ -135,6 +203,10 @@ const AuthContextProvider = ({ children }) => {
       }
     });
   };
+
+  // =====================================================
+  // =====================[ referral ]=====================
+  // =====================================================
 
   const fetchReferral = async () => {
     const response = await fetch(
@@ -162,8 +234,10 @@ const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    fetchUserDetails();
     fetchBalance();
     fetchWalletBalance();
+    fetchWithdrawalsBalance();
     fetchTransaction();
     fetchReferral();
     fetchPackages();
@@ -186,6 +260,7 @@ const AuthContextProvider = ({ children }) => {
       value={{
         user,
         walletBalance,
+        total_withdrawals,
         referral,
         referralUsers,
         referral_code,
@@ -194,8 +269,12 @@ const AuthContextProvider = ({ children }) => {
         transactions,
         packageList,
         userPackage,
+        loadingAcc,
+
+        fetchUserDetails,
         fetchWalletBalance,
         fetchBalance,
+        fetchWithdrawalsBalance,
         fetchTransaction,
         fetchReferral,
         fetchPackages,

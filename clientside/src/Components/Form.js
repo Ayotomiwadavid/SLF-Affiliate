@@ -9,6 +9,7 @@ const Form = ({ type }) => {
     packageList,
     fetchBalance,
     fetchWalletBalance,
+    fetchWithdrawalsBalance,
     fetchTransaction,
     fetchReferral,
     fetchPackages,
@@ -49,6 +50,11 @@ const Form = ({ type }) => {
     return selectedPkg ? selectedPkg.price : "";
   };
 
+
+  // =====================================================
+  // =====================[ SIGN IN ]=====================
+  // =====================================================
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -81,6 +87,7 @@ const Form = ({ type }) => {
         }, 2000);
         fetchBalance();
         fetchWalletBalance();
+        fetchWithdrawalsBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
@@ -96,6 +103,11 @@ const Form = ({ type }) => {
       setLoading(false);
     }
   };
+
+
+  // =====================================================
+  // =====================[ SIGN UP ]=====================
+  // =====================================================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -142,17 +154,18 @@ const Form = ({ type }) => {
         }, 2000);
         fetchBalance();
         fetchWalletBalance();
+        fetchWithdrawalsBalance();
         fetchTransaction();
         fetchReferral();
         fetchPackages();
         fetchUserpackage();
       } else {
         if (data.error_msg) {
-          toast.error(data.error_msg);
+          toast.error("Invalid referral code");
         } else {
-          toast.error("Registration failed. Please try again.");
+          setErrorUsername(data.username);
+          setErrorPassword(password[0]);
         }
-        setErrorUsername(data.username);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);

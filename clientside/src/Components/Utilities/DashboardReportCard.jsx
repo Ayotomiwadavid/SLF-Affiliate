@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 import { useAuth } from "../../context/AuthContext";
 
 const DashboardReportCard = ({ report, index }) => {
-  const { walletBalance, deposits, payouts, earnings, referral } = useAuth();
+  const {
+    loadingAcc,
+    walletBalance,
+    total_withdrawals,
+    deposits,
+    payouts,
+    earnings,
+    referral,
+  } = useAuth();
 
   // // Ensure the inputs are numbers
   // let depositsNumber = Number(deposits);
@@ -17,7 +25,7 @@ const DashboardReportCard = ({ report, index }) => {
       case "Deposits":
         return deposits;
       case "Payouts":
-        return payouts;
+        return total_withdrawals;
       case "Earnings":
         return earnings;
       case "Referral":
@@ -59,12 +67,18 @@ const DashboardReportCard = ({ report, index }) => {
           </h5>
         </a>
         <p
-          className={`font-bold text-3xl ${
+          className={`flex gap-3 font-bold text-3xl ${
             isFirstCard ? "text-white" : "text-black"
           }`}
         >
           {addDollarSign && <>&#8358;</>}
-          {getValue(report.title)}
+          {loadingAcc ? (
+            getValue(report.title)
+          ) : (
+            <div className="flex justify-center items-center">
+              <div className="animate-spin rounded-full h-4 w-4 border-b-4 border"></div>
+            </div>
+          )}
         </p>
       </div>
     </div>

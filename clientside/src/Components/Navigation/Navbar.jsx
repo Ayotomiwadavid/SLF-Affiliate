@@ -31,7 +31,7 @@ const Navbar = () => {
             </button>
             <a href="/dashboard" className="flex ms-2 md:me-24">
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
-                <img src={Logo} alt='slp logo'/>
+                <img src={Logo} alt='slp logo' className="h-12"/>
               </span>
             </a>
           </div>

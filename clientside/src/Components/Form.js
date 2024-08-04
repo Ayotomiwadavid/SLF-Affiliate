@@ -19,7 +19,10 @@ const Form = ({ type }) => {
   const queryParams = new URLSearchParams(location.search);
   const referralCode = queryParams.get("referral_code");
 
-  let referral_Code = Number(referralCode);
+  const realReferralCode = parseInt(referralCode)
+
+  // let referral_Code = Number(referralCode);
+  
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +31,7 @@ const Form = ({ type }) => {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [phone_number, setPhone] = useState("");
-  const [referral_code, setReferralID] = useState(referral_Code || null);
+  const [referral_code, setReferralID] = useState(realReferralCode || null);
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorUsername, setErrorUsername] = useState("");

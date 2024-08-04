@@ -66,6 +66,7 @@ const AuthContextProvider = ({ children }) => {
     ).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          console.log(data)
           setBalance(data.data.wallet_balance);
           setLoadingAcc(true);
         });

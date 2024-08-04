@@ -3,6 +3,9 @@ import Logo from "../Images/SoftlifeLogoWhite.png";
 import User from "../Images/user.png";
 import Saving from "../Images/saving.png";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import emailEvenlope from '../Images/envelope-back.png'
+import LocationEarth from '../Images/blackglobe.png'
+import LocationPin from '../Images/pin.png'
 
 const Footer = () => {
   return (
@@ -71,25 +74,17 @@ const Footer = () => {
           <span className="p-[1px] w-[50%] bg-black mt-[5px]"></span>
           <h1 className="text-4xl font-bold py-4">+2348102743259</h1>
           <ul className="w-full flex flex-col items-start justify-center py-5 gap-3">
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <KeyboardArrowRightIcon /> About Us
+              <img src={emailEvenlope} alt="contact id images" className="h-6 w-6"/> <span>softlifeproject1@gmail.com</span>
             </li>
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <KeyboardArrowRightIcon /> Contact Us
+              <img src={LocationEarth} alt="contact id images" className="h-6 w-6"/> <span>www.softlifeproject.com.ng</span>
             </li>
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <KeyboardArrowRightIcon /> Sign Up
-            </li>
-            <li>
-              {" "}
-              <KeyboardArrowRightIcon /> Sign In
-            </li>
-            <li>
-              {" "}
-              <KeyboardArrowRightIcon /> Services
+              <img src={LocationPin} alt="contact id images" className="h-6 w-6"/> <span>Opposite Eko Hotel, Victoria Island, Lagos, Nigeria</span>
             </li>
           </ul>
         </div>

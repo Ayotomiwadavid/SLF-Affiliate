@@ -78,7 +78,7 @@ const Plan = () => {
               <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Max withdrawal: <>&#8358;</>{plan.maxWithdrawal}</p>
             </div>
 
-            <Link to="http://localhost:3000/sign-up" className="w-full flex items-center justify-center py-2 mb-3">
+            <Link to="/sign-up" className="w-full flex items-center justify-center py-2 mb-3">
               <Button buttonContent='Start Now' classStyle='w-[200px] border-[#F46B45] rounded-full transition-all duration-500 h-[45px] group-hover:bg-[#F46B45] group-hover:text-[#fff] cursor-pointer border-2 bg-transparent text-[#F46B45] font-bold text-lg' />
             </Link>
           </div>

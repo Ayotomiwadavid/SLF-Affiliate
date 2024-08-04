@@ -74,17 +74,17 @@ const Footer = () => {
           <span className="p-[1px] w-[50%] bg-black mt-[5px]"></span>
           <h1 className="text-4xl font-bold py-4">+2348102743259</h1>
           <ul className="w-full flex flex-col items-start justify-center py-5 gap-3">
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <img src={emailEvenlope} alt="contact id images" className="h-6 w-6"/> savehyip@example.com
+              <img src={emailEvenlope} alt="contact id images" className="h-6 w-6"/> <span>softlifeproject1@gmail.com</span>
             </li>
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <img src={LocationEarth} alt="contact id images" className="h-6 w-6"/> Contact Us
+              <img src={LocationEarth} alt="contact id images" className="h-6 w-6"/> <span>www.softlifeproject.com.ng</span>
             </li>
-            <li>
+            <li className="flex items-center justify-center gap-2">
               {" "}
-              <img src={LocationPin} alt="contact id images" className="h-6 w-6"/> Sign Up
+              <img src={LocationPin} alt="contact id images" className="h-6 w-6"/> <span>Opposite Eko Hotel, Victoria Island, Lagos, Nigeria</span>
             </li>
           </ul>
         </div>

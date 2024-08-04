@@ -143,10 +143,10 @@ const Plan = () => {
 
           <div className="w-full flex flex-col items-center justify-center py-7">
             <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Up to 5% Daily for for login</p>
-            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Min deposit: NGN10,000</p>
-            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Max deposit: NGN30,000</p>
-            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Min withdrawal: NGN50,000</p>
-            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Max withdrawal: NGN150,000</p>
+            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Min deposit: NGN100,000</p>
+            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Max deposit: unlimited</p>
+            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Min withdrawal: unlimited</p>
+            <p className="text-[16px] py-1 capitalize text-[#818181] font-sans">Max withdrawal: unlimited</p>
           </div>
 
           <Link to="http://localhost:3000/sign-up" className="w-full flex items-center justify-center py-2 mb-3">

@@ -28,7 +28,7 @@ const Form = ({ type }) => {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [phone_number, setPhone] = useState("");
-  const [referral_code, setReferralID] = useState(referral_Code || "");
+  const [referral_code, setReferralID] = useState(referral_Code || null);
   const [selectedPackage, setSelectedPackage] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorUsername, setErrorUsername] = useState("");

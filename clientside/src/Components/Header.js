@@ -68,30 +68,30 @@ const Header = () => {
           </div>
         </main>
         <ul className="flex flex-col h-full items-start justify-start list-none">
-          <Link
-            to="/"
+          <a
+            href="#heroSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>home</li>
-          </Link>
-          <Link
-            to="/about-us"
+          </a>
+          <a
+            href="#aboutSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>About</li>
-          </Link>
-          <Link
-            to="/investment-plan"
+          </a>
+          <a
+            href="#planSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>investment plan</li>
-          </Link>
-          <Link
-            to="/support"
+          </a>
+          <a
+            href="https://wa.link/8foxzl"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>support</li>
-          </Link>
+          </a>
           <Link to="/sign-up" className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300">
           Sign Up
           </Link>

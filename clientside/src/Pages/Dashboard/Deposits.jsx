@@ -58,7 +58,9 @@ const Deposit = () => {
           account: "Savings", // Or the correct account type
           date: new Date().toISOString().split("T")[0],
         };
-        window.location.href = data.payment_url
+        setTimeout(() => {
+          window.location.href = data.payment_url
+        }, 3000)
         setRecentDeposits([newDeposit, ...recentDeposits]);
         setAmount("");
         setAccount("");

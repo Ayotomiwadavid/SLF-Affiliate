@@ -18,9 +18,15 @@ const Deposit = () => {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
+  const [newPackgeId, setNewPackageId] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [recentDeposits, setRecentDeposits] = useState([
   ]);
+
+  const handleNewPackageId = (id) => {
+    setNewPackageId(id);
+  }
 
   const handleDeposit = async (e) => {
     e.preventDefault();
@@ -56,12 +62,49 @@ const Deposit = () => {
         setRecentDeposits([newDeposit, ...recentDeposits]);
         setAmount("");
         setAccount("");
+        handlePackegeId()
       } else {
         toast.error(data.detail);
       }
     } catch (error) {
       console.error("An error occurred. Please try again later.", error);
       toast.error("An error occurred. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handlePackegeId = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (!amount) {
+      toast.error("All fields are required");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${apiUrl}/finances/purchase/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          "package_id": newPackgeId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        ///kiiiii
+      } else {
+        // toast.error(data.detail);
+      }
+    } catch (error) {
+      // console.error("An error occurred. Please try again later.", error);
+      // toast.error("An error occurred. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -97,7 +140,7 @@ const Deposit = () => {
                 Choose Package
               </option>
               {packageList.map((pkg) => (
-                <option key={pkg.id} value={pkg.price}>
+                <option key={pkg.id} value={pkg.price} onClick={() => handleNewPackageId(pkg.id)}>
                   {pkg.name} ({pkg.price})
                 </option>
               ))}

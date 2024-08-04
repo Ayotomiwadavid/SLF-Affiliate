@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from '../../Images/SoftlifeLogo.png'
 
 const Navbar = () => {
   return (
@@ -30,7 +31,7 @@ const Navbar = () => {
             </button>
             <a href="/dashboard" className="flex ms-2 md:me-24">
               <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">
-                SLF_AFFILIATE
+                <img src={Logo} alt='slp logo'/>
               </span>
             </a>
           </div>

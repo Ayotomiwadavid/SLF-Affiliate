@@ -19,24 +19,24 @@ const Header = () => {
       </div>
       <nav className="hidden items-center justify-center md:flex">
         <ul className="flex items-center justify-center list-none">
-          <a
-            href="#heroSection"
+          <Link
+            to='/'
             className="font-serif  p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>home</li>
-          </a>
-          <a
-            href="#aboutSection"
+          </Link>
+          <Link
+            to="/#aboutSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>About</li>
-          </a>
-          <a
-            href="#planSection"
+          </Link>
+          <Link
+            to="/#planSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>Investment plan</li>
-          </a>
+          </Link>
           <a
             href="https://wa.link/8foxzl"
             target="_blank"
@@ -68,24 +68,24 @@ const Header = () => {
           </div>
         </main>
         <ul className="flex flex-col h-full items-start justify-start list-none">
-          <a
-            href="#heroSection"
+          <Link
+            to="/"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>home</li>
-          </a>
-          <a
-            href="#aboutSection"
+          </Link>
+          <Link
+            to="/#aboutSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>About</li>
-          </a>
-          <a
-            href="#planSection"
+          </Link>
+          <Link
+            to="/#planSection"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
           >
             <li>investment plan</li>
-          </a>
+          </Link>
           <a
             href="https://wa.link/8foxzl"
             className="font-serif p-3 font-semibold  cursor-pointer text-[#3C3C3C] capitalize text-base hover:text-[#F46B45] transition duration-300"
@@ -100,7 +100,7 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
-      {/* SIDEBAR FOR MOBILE RESPONSIVENESS STARTS HERE*/}
+      {/* SIDEBAR FOR MOBILE RESPONSIVENESS EndS HERE*/}
 
       <aside className="hidden gap-0 items-center justify-center md:flex">
         <Link to="/sign-up">

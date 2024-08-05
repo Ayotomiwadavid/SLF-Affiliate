@@ -15,9 +15,6 @@ const Deposit = () => {
   const [amount, setAmount] = useState(packagePrice || "");
   const [account, setAccount] = useState("");
 
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-
   const [newPackgeId, setNewPackageId] = useState(null);
 
   const [loading, setLoading] = useState(false);
@@ -165,7 +162,7 @@ const Deposit = () => {
           </button>
         </div>
 
-        {/* <h2 className="text-2xl font-bold text-center mb-4">Recent Deposits</h2>
+        <h2 className="text-2xl font-bold text-center mb-4">Recent Deposits</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {recentDeposits.map((deposit, index) => (
             <div className="bg-white p-6 rounded-lg shadow-md" key={index}>
@@ -174,7 +171,7 @@ const Deposit = () => {
               <p className="text-gray-500">Date: {deposit.date}</p>
             </div>
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );

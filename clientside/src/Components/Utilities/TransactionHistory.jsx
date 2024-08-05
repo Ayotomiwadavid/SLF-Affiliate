@@ -21,6 +21,17 @@ const TransactionHistory = () => {
     setSearchTerm(e.target.value);
   };
 
+  const getValue = (status) => {
+    switch (status) {
+      case "SUCCESSFUL":
+        return "Completed";
+      case "PENDING":
+        return "Pending";
+      default:
+        return 0;
+    }
+  };
+
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "SUCCESSFUL":
@@ -283,7 +294,7 @@ const TransactionHistory = () => {
                               {amount}
                             </td>
                             <td className={`px-2 py-3 text-[${textColor}]`}>
-                              Completed
+                              {getValue(status)}
                             </td>
                           </tr>
                         );
